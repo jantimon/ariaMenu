@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Dropdown Menus</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="src/ariaMenu.min.js"></script>
+  <link href="src/ariaMenu.css" type="text/css" rel="stylesheet">
+  <link href="src/theme/default.css" type="text/css" rel="stylesheet">
+  <!-- Demo styling -->
+  <style type="text/css">
+    p {
+      clear: both;
+    }
+
+    .code {
+      width: 100%;
+      border: 1px;
+      resize: none;
+      height: 700px;
+      font-family: monospace;
+    }
+
+    dd {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="example">
+
+<div class="content wide">
+  <article role="main">
+    <h1>CSS Dropdown Menus</h1>
+
+    <p>
+      This page applies techniques described in Derek Featherstone's article <a
+            href="http://simplyaccessible.com/article/better-for-accessibility/">Better For Accessibility</a>, and
+      specifically uses code from his <a href="http://simplyaccessible.com/examples/css-menu/option-6/">Option 6</a>
+      example.
+    </p>
+
+    <p>Using off-left positioning for hiding menus with support for showing menus on <code>:focus</code> and
+      <code>:hover</code>. Includes proper <code>:focus</code> states for links. Uses jQuery to display menus on <code>:focus</code>.
+      Also uses ARIA properties for menus.</p>
+
+    <ul>
+        <li><strong>Arrow keys</strong> moves a virtual cursor which sets focus to
+          <ul>
+            <li>a sibling of the current menu item</li>
+            <li>a direct parent list element</li>
+            <li>the first list element of a sub menu</li>
+          </ul>
+        </li>
+        <li><strong>Escape</strong> closes any focused menus.</li>
+        <li><strong>Tabbing</strong> allows cycling through every menu item.</li>
+    </ul>
+
+    <dl>
+      <dt>Size (minifed & gziped)</dt>
+      <dd>1.0 KB</dd>
+      <dt>Size (minfied)</dt>
+      <dd>2.6 KB</dd>
+      <dt>Size (original with comments)</dt>
+      <dd>7.1 KB</dd>
+    </dl>
+
+    <script>
+      jQuery(function ($) {
+        $(".aria-menu").ariaMenu()
+      });
+    </script>
+
+    <ul class="aria-menu css-fallback">
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">About</a>
+        <ul>
+          <li><a href="#">The Company</a></li>
+          <li><a href="#">The Team</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Services</a>
+        <ul>
+          <li><a href="#">One Service</a></li>
+          <li><a href="#">Two Service</a></li>
+          <li><a href="#">Three Service</a></li>
+          <li><a href="#">Four</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Products</a>
+        <ul>
+          <li><a href="#">Apples</a></li>
+          <li><a href="#">Oranges</a></li>
+          <li><a href="#">Grapes</a></li>
+          <li><a href="#">Pears</a></li>
+          <li><a href="#">Strawberries</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="#">Contact Us</a>
+        <ul>
+          <li><a href="#">Store Hours</a></li>
+          <li><a href="#">Directions</a></li>
+          <li><a href="#">Staff Directory</a></li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <textarea class="code">
+      <ul class="aria-menu css-fallback">
+        <li><a href="#">Home</a></li>
+        <li>
+          <a href="#">About</a>
+          <ul>
+            <li><a href="#">The Company</a></li>
+            <li><a href="#">The Team</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Services</a>
+          <ul>
+            <li><a href="#">One Service</a></li>
+            <li><a href="#">Two Service</a></li>
+            <li><a href="#">Three Service</a></li>
+            <li><a href="#">Four</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Products</a>
+          <ul>
+            <li><a href="#">Apples</a></li>
+            <li><a href="#">Oranges</a></li>
+            <li><a href="#">Grapes</a></li>
+            <li><a href="#">Pears</a></li>
+            <li><a href="#">Strawberries</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Contact Us</a>
+          <ul>
+            <li><a href="#">Store Hours</a></li>
+            <li><a href="#">Directions</a></li>
+            <li><a href="#">Staff Directory</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <script>
+        jQuery(function ($) {
+          $(".aria-menu").ariaMenu()
+        });
+      </script>
+    </textarea>
+  </article>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+.aria-menu,
+.aria-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Top level nav */
+.aria-menu {
+  float: left;
+}
+
+/* Sub menus */
+.aria-menu ul {
+  position: absolute;
+  top: 2.30em;
+  display:none;
+}
+
+/*
+  Sub menus should be accessible for screen readers when used without javascript
+  http://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+*/
+.aria-menu.css-fallback ul {
+  left: -999em;
+  display: block;
+}
+
+.aria-menu li {
+  float: left;
+  position: relative;
+}
+
+/* Top level nav items */
+.aria-menu li > a {
+  float: left;
+}
+
+/* Sub menu active state (js) */
+.aria-menu ul.show-menu {
+  display: block;
+}
+
+/* Sub menu active state (css fallback only) */
+.aria-menu.css-fallback li:hover ul,
+.aria-menu.css-fallback li:focus ul {
+  left: 0px;
+}
+
+.aria-menu ul li {
+  float: none;
+  position: static;
+}
+
+.aria-menu ul a {
+  float: none;
+  display: block;
+}
