@@ -1,29 +1,14 @@
-/** @license Copyright (c) 2013 Jan Nicklas Released under MIT license */
-/* global define: false, jQuery: true */
+/** Copyright (c) 2013 Jan Nicklas Released under MIT license */
 
 // Closure compiler requires ['name'] notation
 // http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
 /* jshint sub:true */
 
-// ==ClosureCompiler==
-// @compilation_level ADVANCED_OPTIMIZATIONS
-// @output_file_name ariaMenu.min.js
-// @externs_url https://closure-compiler.googlecode.com/git/contrib/externs/jquery-1.9.js
-// ==/ClosureCompiler==
+/* global jQuery: true */
 
-// RequireJS amd factory
-// http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239
-(function (factory) {
+(function ($) {
   'use strict';
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], factory);
-  } else {
-    // Browser globals
-    factory(jQuery);
-  }
-}(function ($) {
-  'use strict';
+  // @@ start @@ //
 
   /**
    * The menu class
@@ -292,4 +277,5 @@
     });
   };
 
-}));
+  // @@ end @@ //
+}(jQuery));

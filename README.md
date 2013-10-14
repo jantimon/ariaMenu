@@ -10,7 +10,7 @@ Using off-left positioning for hiding menus with support for showing menus on <c
 
 ## Demo ##
 
-Try the gh-pages branch **[demo](http://jantimon.github.io/ariaMenu/)**.
+Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
 
 ## Features ##
 
@@ -28,7 +28,11 @@ Try the gh-pages branch **[demo](http://jantimon.github.io/ariaMenu/)**.
  + Size (minfied)
     **2.3** KB
  + Size (original with comments)
-    **7.5** KB
+    **8.99** Kb
+
+## Documentation ##
+
+**[docs (explainJS)](http://jantimon.github.io/ariaMenu/docs/explain.html)**.
 
 ## Links ##
 
