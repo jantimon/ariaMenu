@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>../dist/ariaMenu.dev.js | ExplainJS by grunt-explainjs</title>
+  <link rel="stylesheet" type="text/css" href="css/unsemantic.css"/>
+  <link rel="stylesheet" type="text/css" href="css/explain.css"/>
+  <link href='http://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:300italic,300,700' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1" />
+</head>
+
+<body>
+  <div class='page-menu'>
+    <div class='grid-container'>
+      <div class='grid-60 mobile-grid-100'>
+        <a class='logo' href='http://www.explainjs.com'>ExplainJS</a> by <a class='logo' href='https://github.com/collinforrester/grunt-explainjs'>grunt-explainjs</a>
+        
+          for
+          <a href='../dist/ariaMenu.dev.js' class='src-title'>../dist/ariaMenu.dev.js</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class='sections grid-container'>
+    <div class='code-bg hide-on-mobile'>
+    </div>
+    <br />
+    <br />
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Copyright (c) 2013 Jan Nicklas Released under MIT license</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre></pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>global define: false, jQuery: true  jshint sub:true</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre></pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>RequireJS amd factory  http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>(function (factory) {
+  'use strict';
+  if (typeof define === 'function' && define.amd) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>AMD. Register as an anonymous module.</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    define(['jquery'], factory);
+  } else {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Run without AMD</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    factory(jQuery);
+  }
+}(function ($) {
+  'use strict';
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>The menu class</p> <p>@param {HTMLElement} item</p> <p>@param {Array} [options]</p> <p>@constructor</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  function AriaMenu(item, options) {
+    this.settings = $.extend(this.defaults, options);
+    this.$elem = $(item);
+    this.init();
+  }
+
+  AriaMenu.prototype = {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Default settings  Single quotes are required for the google closure compiler:  http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    defaults: {
+      'focusClass': 'menuitem-focus',
+      'focusedSubMenuClass': 'show-menu',
+      'closeDelay': 100
+    },
+
+    events: {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when the user moves his mouse over a list item</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      listItemMouseOver: function () {
+        $(this).focus();
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when the user moves his mouse away from a list item</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      listItemMouseOut: function () {
+        if ($(this).is(':focus')) {
+          $(this).blur();
+        }
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when a list item receives focus</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      listItemFocus: function (event) {
+        var settings = event.data.settings;</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Show the sub menus</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        $(this)
+          .stop()
+          .addClass(settings['focusClass'])
+          .find('>ul')
+          .addClass(settings['focusedSubMenuClass'])
+          .attr('aria-hidden', false);
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when the focus is lost</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      listItemBlur: function (event) {
+        var settings = event.data.settings;</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Wait for a short moment and hide the sub menus</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        $(this)
+          .stop()
+          .delay(settings['closeDelay'])
+          .queue(function (next) {
+            $(this).removeClass(settings['focusClass'])
+              .find('>ul')
+              .removeClass(settings['focusedSubMenuClass'])
+              .attr('aria-hidden', true);
+            next();
+          });
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when a key event bubbles to a root menu list item</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      keyDown: function (event) {
+        var _this = event.data;
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Escape pressed:</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        if (event.which === 27) {
+          event.preventDefault();</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Hide the menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          _this.closeMenu();
+        }</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Arrow keys pressed:</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        else if (event.which >= 37 && event.which <= 40) {
+          _this.events.arrowKeyDown.apply(this, arguments);
+        }
+
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered when an arrow key event bubbles to a root menu list item</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      arrowKeyDown: function (event) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Usually the event target is the focused link - so we pick the  parent to get the active listElement</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        var $focusedListElement = $(event.target).closest('li'),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the focused list element Dimensions</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          focusedListElementWidth = $focusedListElement.width(),
+          focusedListElementHeight = $focusedListElement.height(),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the focused menu element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $focusedMenu = $focusedListElement.closest('ul'),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the parent element of the focused element (if one exists)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $parentListElement = ($focusedListElement[0] === this) ? $() : $focusedMenu.closest('li'),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the parent menu of the focused element (if one exists)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $parentMenu = $parentListElement.parent(),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the sub menu (if one exists)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $subMenu = $focusedListElement.find('>ul'),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Create a virtual cursor with the position of the focused element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          virtualCursor = new VirtualCursor();
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Move the cursor over the current focused element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        virtualCursor.moveOver($focusedListElement);
+
+        if (event.which === 39) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{right} key pressed  Move the virtual cursor to the right</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          virtualCursor.left += focusedListElementWidth;
+        }
+        else if (event.which === 40) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{bottom} key pressed  Move the virtual cursor down</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          virtualCursor.top += focusedListElementHeight;
+        }
+        else if (event.which === 37) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{left} key pressed  Move the virtual cursor to the left</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          virtualCursor.left -= focusedListElementWidth;
+        } else {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{top} key pressed  Move the virtual cursor up</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          virtualCursor.top -= focusedListElementHeight;
+        }
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Select the element below the virtual cursor</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        var $selectedListElement = $(virtualCursor.getElementBelowCursor('li')),
+          selectedMenu = $selectedListElement.parent()[0] || false;
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Check if the virtual cursor selected a sibling menu item</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        if ($focusedMenu[0] === selectedMenu) {
+          $selectedListElement.find('>a').focus();
+          event.preventDefault();
+        }</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Check if the virtual cursor selected a sub menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        else if ($subMenu[0] === selectedMenu) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Select the first element in the sub menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $subMenu.find('>li>a').first().focus();
+          event.preventDefault();
+        }</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Check if the virtual cursor selected a parent menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        else if ($parentMenu[0] === selectedMenu) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Select the parent list element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $parentListElement.find('>a').focus();
+          event.preventDefault();
+        }
+      }
+    },
+
+    init: function () {
+      this.setAriaRoles();
+      this.$elem</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Listen to mouse and keyboard events</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .on('focusin', 'li', this, this.events.listItemFocus)
+        .on('focusout', 'li', this, this.events.listItemBlur)
+        .on('mouseover', 'a', this, this.events.listItemMouseOver)
+        .on('mouseout', 'a', this, this.events.listItemMouseOut)
+        .on('keydown', '>li', this, this.events.keyDown)</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Disable the css fallback</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .removeClass('css-fallback')</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Add aria-menu class</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .addClass('aria-menu');
+
+    },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Helper function</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    find: function (selector) {
+      return this.$elem.find(selector);
+    },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Add Aria roles and poperties  http://http://www.w3.org/TR/wai-aria/</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    setAriaRoles: function () {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Add ARIA role to menu bar  http://www.w3.org/TR/wai-aria/roles#menubar</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      this.$elem.attr('role', 'menubar');
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Add ARIA role to menu items  http://www.w3.org/TR/wai-aria/roles#menuitem</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      this.find('li').attr('role', 'menuitem');
+
+      this.find('a+ul')</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Add ARIA role to sub menus  http://www.w3.org/TR/wai-aria/roles#menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .attr({ 'aria-hidden': 'true', 'role': 'menu' })</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Adding aria-haspopup for appropriate items  http://www.w3.org/TR/wai-aria/states<em>and</em>properties#aria-haspopup</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .each(function () {
+          $(this).prev('a').attr('aria-haspopup', 'true');
+        });
+    },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Closes the menu by removing the focus</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    closeMenu: function () {
+      this.$elem.find(':focus').blur();
+    }
+  };
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>A virtual mouse cursor  which helps to support keyboard navigation</p> <p>@constructor</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  function VirtualCursor() {
+    this.left = 0;
+    this.top = 0;
+  }
+
+  VirtualCursor.prototype = {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Move the virtual cursor to the center of the given target</p> <p>@param {HTMLElement} target</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    moveOver: function (target) {
+      var $target = $(target),
+        $document = $(document);
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Set left and top value</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      $.extend(this, $target.offset());
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Move virtual cursor in the middle of the focused element  relative to the current scroll position</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      this.top += 0.5 * $target.height() - $document.scrollTop();
+      this.left += 0.5 * $target.width() - $document.scrollLeft();
+
+    },</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Return the element at the current courser position</p> <p>@param {string} [selector]</p> <p>@returns {HTMLElement|null}</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    getElementBelowCursor: function (selector) {
+      var $element = $(document.elementFromPoint(this.left, this.top));
+      if (selector && !$element.is(selector)) {
+        $element = $element.closest(selector);
+      }
+      return $element || null;
+    }
+  };
+
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>jQuery plugin interface  Use quoted notation for ADVANCED_OPTIMIZATIONS</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  $['fn']['ariaMenu'] = function (opt) {
+    return this.each(function () {
+      var item = $(this), instance = item.data('AriaMenu');
+      if (!instance) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>create plugin instance and save it in data</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        item.data('AriaMenu', new AriaMenu(this, opt));
+      } else {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>if instance already created call method</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        if (typeof opt === 'string') {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>slice arguments to leave only arguments after function name</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          var args = Array.prototype.slice.call(arguments, 1);
+          instance[opt].apply(instance, args);
+        }
+      }
+    });
+  };
+
+
+}));.</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+  </div>
+</body>
+</html>
