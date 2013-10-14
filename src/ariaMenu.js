@@ -1,9 +1,15 @@
-// ==ClosureCompiler==
-// @compilation_level SIMPLE_OPTIMIZATIONS
-// @output_file_name ariaMenu.min.js
-// @externs_url http://closure-compiler.googlecode.com/svn/trunk/contrib/externs/jquery-1.8.js
-// ==/ClosureCompiler==
+/** @license Copyright (c) 2013 Jan Nicklas Released under MIT license */
 /* global define: false, jQuery: true */
+
+// Closure compiler requires ['name'] notation
+// http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
+/* jshint sub:true */
+
+// ==ClosureCompiler==
+// @compilation_level ADVANCED_OPTIMIZATIONS
+// @output_file_name ariaMenu.min.js
+// @externs_url https://closure-compiler.googlecode.com/git/contrib/externs/jquery-1.9.js
+// ==/ClosureCompiler==
 
 // RequireJS amd factory
 // http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239
@@ -34,10 +40,12 @@
 
   AriaMenu.prototype = {
     /* Default settings */
+    // Single quotes are required for the google closure compiler:
+    // http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
     defaults: {
-      focusClass: 'menuitem-focus',
-      focusedSubMenuClass: 'show-menu',
-      closeDelay: 100
+      'focusClass': 'menuitem-focus',
+      'focusedSubMenuClass': 'show-menu',
+      'closeDelay': 100
     },
 
     events: {
@@ -59,9 +67,9 @@
         /* Show the sub menus */
         $(this)
           .stop()
-          .addClass(settings.focusClass)
+          .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings.focusedSubMenuClass)
+          .addClass(settings['focusedSubMenuClass'])
           .attr('aria-hidden', false);
       },
 
@@ -71,11 +79,11 @@
         /* Wait for a short moment and hide the sub menus */
         $(this)
           .stop()
-          .delay(settings.closeDelay)
+          .delay(settings['closeDelay'])
           .queue(function (next) {
-            $(this).removeClass(settings.focusClass)
+            $(this).removeClass(settings['focusClass'])
               .find('>ul')
-              .removeClass(settings.focusedSubMenuClass)
+              .removeClass(settings['focusedSubMenuClass'])
               .attr('aria-hidden', true);
             next();
           });
@@ -100,8 +108,6 @@
 
       /* Triggered when an arrow key event bubbles to a root menu list item */
       arrowKeyDown: function (event) {
-        var _this = event.data;
-
         // Usually the event target is the focused link - so we pick the
         // parent to get the active listElement
         var $focusedListElement = $(event.target).closest('li'),
@@ -268,9 +274,8 @@
 
 
   // jQuery plugin interface
-  // for advanced google closure compilation change the following line to
-  // $['fn']['ariaMenu'] = ...
-  $.fn.ariaMenu = function (opt) {
+  // Use quoted notation for ADVANCED_OPTIMIZATIONS
+  $['fn']['ariaMenu'] = function (opt) {
     return this.each(function () {
       var item = $(this), instance = item.data('AriaMenu');
       if (!instance) {
