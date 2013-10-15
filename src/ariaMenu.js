@@ -113,23 +113,24 @@
         // Move the cursor over the current focused element
         virtualCursor.moveOver($focusedListElement);
 
+        // {right} key pressed
+        // Move the virtual cursor to the right
         if (event.which === 39) {
-          // {right} key pressed
-          // Move the virtual cursor to the right
           virtualCursor.left += focusedListElementWidth;
         }
+        // {bottom} key pressed
+        // Move the virtual cursor down
         else if (event.which === 40) {
-          // {bottom} key pressed
-          // Move the virtual cursor down
           virtualCursor.top += focusedListElementHeight;
         }
+        // {left} key pressed
+        // Move the virtual cursor to the left
         else if (event.which === 37) {
-          // {left} key pressed
-          // Move the virtual cursor to the left
           virtualCursor.left -= focusedListElementWidth;
-        } else {
-          // {top} key pressed
-          // Move the virtual cursor up
+        }
+        // {top} key pressed
+        // Move the virtual cursor up
+        else {
           virtualCursor.top -= focusedListElementHeight;
         }
 
@@ -157,6 +158,9 @@
       }
     },
 
+    /**
+     * Plugin initialization
+     */
     init: function () {
       this.setAriaRoles();
       this.$elem

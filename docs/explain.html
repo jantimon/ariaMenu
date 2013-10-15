@@ -366,8 +366,7 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>        virtualCursor.moveOver($focusedListElement);
-
-        if (event.which === 39) {</pre>
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -378,9 +377,9 @@
           <p>{right} key pressed  Move the virtual cursor to the right</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          virtualCursor.left += focusedListElementWidth;
-        }
-        else if (event.which === 40) {</pre>
+          <pre>        if (event.which === 39) {
+          virtualCursor.left += focusedListElementWidth;
+        }</pre>
         </div>
       </div>
       <div class='clear'>
@@ -391,9 +390,9 @@
           <p>{bottom} key pressed  Move the virtual cursor down</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          virtualCursor.top += focusedListElementHeight;
-        }
-        else if (event.which === 37) {</pre>
+          <pre>        else if (event.which === 40) {
+          virtualCursor.top += focusedListElementHeight;
+        }</pre>
         </div>
       </div>
       <div class='clear'>
@@ -404,8 +403,9 @@
           <p>{left} key pressed  Move the virtual cursor to the left</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          virtualCursor.left -= focusedListElementWidth;
-        } else {</pre>
+          <pre>        else if (event.which === 37) {
+          virtualCursor.left -= focusedListElementWidth;
+        }</pre>
         </div>
       </div>
       <div class='clear'>
@@ -416,7 +416,8 @@
           <p>{top} key pressed  Move the virtual cursor up</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          virtualCursor.top -= focusedListElementHeight;
+          <pre>        else {
+          virtualCursor.top -= focusedListElementHeight;
         }
 </pre>
         </div>
@@ -496,8 +497,18 @@
         }
       }
     },
-
-    init: function () {
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Plugin initialization</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    init: function () {
       this.setAriaRoles();
       this.$elem</pre>
         </div>
