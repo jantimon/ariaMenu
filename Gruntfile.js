@@ -1,4 +1,6 @@
+/* global module: false */
 module.exports = function (grunt) {
+  'use strict';
 
   // Project configuration.
   grunt.initConfig({
@@ -76,6 +78,7 @@ module.exports = function (grunt) {
       }
     },
 
+    // Generate documentation
     explainjs: {
       dist: {
         options: {
@@ -87,21 +90,46 @@ module.exports = function (grunt) {
             dest: 'docs/explain.html'
           }
         ]
-      },
+      }
     },
 
+    // Output bytesize
     bytesize: {
       all: {
         src: [
           'dist/*.js'
         ]
       }
-    }
+    },
 
+    // Webserver for PhantomJS
+    connect: {
+      www: {
+        options: {
+          base: './',
+          port: 4545
+        }
+      }
+    },
+
+    // Phantom JS
+    casper: {
+        options: {
+          test: true
+        },
+        test: {
+          options: {
+            port: '<%= connect.www.options.port %>'
+          },
+          src: ['tests/casper/<%= pkg.name %>.js']
+        }
+    }
 
   });
 
   grunt.loadNpmTasks("grunt-contrib-jshint");
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-casper');
   grunt.loadNpmTasks('grunt-replace');
   grunt.loadNpmTasks('grunt-closure-tools');
   grunt.loadNpmTasks('grunt-explainjs');
@@ -113,7 +141,16 @@ module.exports = function (grunt) {
     'jshint',
     'closureCompiler',
     'explainjs',
+    'connect',
+    'casper',
     'bytesize'
+  ]);
+
+  grunt.registerTask('test', [
+    'replace',
+    'jshint',
+    'connect',
+    'casper'
   ]);
 
 };
