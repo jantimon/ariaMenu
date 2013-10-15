@@ -4,13 +4,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    jshint: {
-      files: ["src/*.js", "!src/wrapper.js"],
-      options: {
-        jshintrc: ".jshintrc"
-      }
-    },
-
     replace: {
       dist: {
         options: {
@@ -32,6 +25,13 @@ module.exports = function (grunt) {
         files: [
           {src: ['src/wrapper.js'], dest: 'dist/<%= pkg.name %>.dev.js'}
         ]
+      }
+    },
+
+    jshint: {
+      files: ["src/<%= pkg.name %>.js", "dist/<%= pkg.name %>.dev.js"],
+      options: {
+        jshintrc: ".jshintrc"
       }
     },
 
@@ -109,8 +109,8 @@ module.exports = function (grunt) {
 
   // Default task(s).
   grunt.registerTask('default', [
-    'jshint',
     'replace',
+    'jshint',
     'closureCompiler',
     'explainjs',
     'bytesize'
