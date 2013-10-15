@@ -45,7 +45,7 @@
 }
 
 /* Top level hover state, preserve hover state when hovering dropdown  */
-.aria-menu .menuitem-focus > a:focus,
+.aria-menu .menuitem-focus > a,
 .aria-menu.css-fallback li > a:hover,
 .aria-menu.css-fallback li > a:focus,
 .aria-menu.css-fallback li:focus > a,
@@ -102,7 +102,7 @@
 }
 
 /* Drop down menu item hover state  */
-.aria-menu ul .menuitem-focus > a:focus,
+.aria-menu ul .menuitem-focus > a,
 .aria-menu.css-fallback ul a:hover,
 .aria-menu.css-fallback ul a:focus {
   background: #EEE;
