@@ -34,6 +34,10 @@ Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
 
 **[docs (explainJS)](http://jantimon.github.io/ariaMenu/docs/explain.html)**.
 
+## Tests ##
+
+[![Travis Build](https://api.travis-ci.org/jantimon/ariaMenu.png)](https://travis-ci.org/jantimon/ariaMenu)
+
 ## Links ##
 
   + Responsive menus
