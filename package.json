@@ -11,5 +11,9 @@
     "grunt-replace": "~0.5.1",
     "grunt-explainjs": "",
     "grunt-bytesize": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jantimon/ariaMenu.git"
   }
 }
