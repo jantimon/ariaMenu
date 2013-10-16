@@ -1,0 +1,112 @@
+/*
+ *  This css theme is optional and should not be included in
+ *  your page unless you want a very similar look like in our demo
+ */
+
+.aria-menu {
+  /* Top level nav */
+  float: left;
+  margin: 20px 0;
+  background: #DDD;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#999));
+  background-image: -moz-linear-gradient(top, #DDD, #999);
+
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+
+  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+
+  ul {
+    /* Dropdowns */
+    -webkit-transition: 0.1s linear opacity;
+
+    min-width: 150px;
+    background: #333;
+    background: rgba(0, 0, 0, 0.9);
+
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  li > a {
+    /* Top level nav items */
+    padding: 10px 15px;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+
+  .menuitem-focus > a,
+  &.css-fallback li > a:hover,
+  &.css-fallback li > a:focus,
+  &.css-fallback li:focus > a,
+  &.css-fallback li:hover > a {
+    /* Top level hover state, preserve hover state when hovering dropdown  */
+    background: #999;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#999), to(#DDD));
+    background-image: -moz-linear-gradient(top, #999, #DDD);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
+    outline: 0;
+  }
+
+  > li:first-child > a {
+    /* Rounded corners for first top level nav item */
+    border-left: 0;
+    -webkit-border-top-left-radius: 7px;
+    -webkit-border-bottom-left-radius: 7px;
+    -moz-border-radius-topleft: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+  }
+
+  > li:last-child > a {
+    /* Rounded corners for last top level nav item */
+    border-right: 0;
+    -webkit-border-top-right-radius: 7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-topright: 7px;
+    -moz-border-radius-bottomright: 7px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  ul a {
+    /* Drop down menu item */
+    color: #FFF;
+    font-size: 12px;
+    text-shadow: none;
+    border: 1px solid #222;
+    border-width: 0 0 1px;
+    -webkit-transition: 0.1s linear all;
+  }
+
+  ul,
+  ul li:last-child a {
+    /* Rounded corners for ul and last list item */
+    border: 0;
+    -webkit-border-bottom-left-radius: 7px;
+    -webkit-border-bottom-right-radius: 7px;
+    -moz-border-radius-bottomleft: 7px;
+    -moz-border-radius-bottomright: 7px;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+  }
+
+  ul .menuitem-focus > a,
+  &.css-fallback ul a:hover,
+  &.css-fallback ul a:focus {
+    /* Drop down menu item hover state  */
+    background: #EEE;
+    color: #333;
+    text-shadow: none;
+  }
+}

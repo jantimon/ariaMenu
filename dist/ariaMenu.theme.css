@@ -2,38 +2,32 @@
  *  This css theme is optional and should not be included in
  *  your page unless you want a very similar look like in our demo
  */
-
-/* Top level nav */
 .aria-menu {
+  /* Top level nav */
+  float: left;
   margin: 20px 0;
   background: #DDD;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#999));
-  background-image: -moz-linear-gradient(top, #DDD, #999);
-
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
+  background-image: -moz-linear-gradient(top, #dddddd, #999999);
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   border-radius: 7px;
-
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
-
-/* Dropdowns */
 .aria-menu ul {
+  /* Dropdowns */
   -webkit-transition: 0.1s linear opacity;
-
   min-width: 150px;
   background: #333;
   background: rgba(0, 0, 0, 0.9);
-
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
 }
-
-/* Top level nav items */
 .aria-menu li > a {
+  /* Top level nav items */
   padding: 10px 15px;
   border-left: 1px solid rgba(255, 255, 255, 0.4);
   border-right: 1px solid rgba(0, 0, 0, 0.2);
@@ -43,22 +37,16 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
-
-/* Top level hover state, preserve hover state when hovering dropdown  */
-.aria-menu .menuitem-focus > a,
-.aria-menu.css-fallback li > a:hover,
-.aria-menu.css-fallback li > a:focus,
-.aria-menu.css-fallback li:focus > a,
-.aria-menu.css-fallback li:hover > a {
+.aria-menu .menuitem-focus > a, .aria-menu.css-fallback li > a:hover, .aria-menu.css-fallback li > a:focus, .aria-menu.css-fallback li:focus > a, .aria-menu.css-fallback li:hover > a {
+  /* Top level hover state, preserve hover state when hovering dropdown  */
   background: #999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999), to(#DDD));
-  background-image: -moz-linear-gradient(top, #999, #DDD);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
+  background-image: -moz-linear-gradient(top, #999999, #dddddd);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
   outline: 0;
 }
-
-/* Rounded corners for first top level nav item */
 .aria-menu > li:first-child > a {
+  /* Rounded corners for first top level nav item */
   border-left: 0;
   -webkit-border-top-left-radius: 7px;
   -webkit-border-bottom-left-radius: 7px;
@@ -67,9 +55,8 @@
   border-top-left-radius: 7px;
   border-bottom-left-radius: 7px;
 }
-
-/* Rounded corners for last top level nav item */
 .aria-menu > li:last-child > a {
+  /* Rounded corners for last top level nav item */
   border-right: 0;
   -webkit-border-top-right-radius: 7px;
   -webkit-border-bottom-right-radius: 7px;
@@ -78,9 +65,8 @@
   border-top-right-radius: 7px;
   border-bottom-right-radius: 7px;
 }
-
-/* Drop down menu item */
 .aria-menu ul a {
+  /* Drop down menu item */
   color: #FFF;
   font-size: 12px;
   text-shadow: none;
@@ -88,10 +74,9 @@
   border-width: 0 0 1px;
   -webkit-transition: 0.1s linear all;
 }
-
-/* Rounded corners for ul and last list item */
 .aria-menu ul,
 .aria-menu ul li:last-child a {
+  /* Rounded corners for ul and last list item */
   border: 0;
   -webkit-border-bottom-left-radius: 7px;
   -webkit-border-bottom-right-radius: 7px;
@@ -100,11 +85,8 @@
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
 }
-
-/* Drop down menu item hover state  */
-.aria-menu ul .menuitem-focus > a,
-.aria-menu.css-fallback ul a:hover,
-.aria-menu.css-fallback ul a:focus {
+.aria-menu ul .menuitem-focus > a, .aria-menu.css-fallback ul a:hover, .aria-menu.css-fallback ul a:focus {
+  /* Drop down menu item hover state  */
   background: #EEE;
   color: #333;
   text-shadow: none;

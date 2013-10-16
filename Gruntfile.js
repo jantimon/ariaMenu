@@ -1,6 +1,9 @@
-/* global module: false */
+/* jshint node: true */
 module.exports = function (grunt) {
   'use strict';
+
+  // Automatically load npm tasks from package.json
+  require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
@@ -123,23 +126,46 @@ module.exports = function (grunt) {
           },
           src: ['tests/casper/<%= pkg.name %>.js']
         }
+    },
+
+    sass: {
+      dist: {
+        options: {
+          style: 'expanded'
+        },
+        files: [
+          {
+            src: ['src/<%= pkg.name %>.scss'],
+            dest: 'dist/<%= pkg.name %>.layout.css'
+          },
+          {
+            src: ['src/theme/default.scss'],
+            dest: 'dist/<%= pkg.name %>.theme.css'
+          }
+        ]
+      }
+    },
+
+
+    cssmin: {
+      combine: {
+        files: {
+          'dist/<%= pkg.name %>.min.css': ['dist/<%= pkg.name %>.layout.css', 'dist/<%= pkg.name %>.theme.css']
+        }
+      }
     }
 
   });
 
-  grunt.loadNpmTasks("grunt-contrib-jshint");
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-casper');
-  grunt.loadNpmTasks('grunt-replace');
-  grunt.loadNpmTasks('grunt-closure-tools');
-  grunt.loadNpmTasks('grunt-explainjs');
-  grunt.loadNpmTasks('grunt-bytesize');
+
 
   // Default task(s).
   grunt.registerTask('default', [
     'replace',
     'jshint',
     'closureCompiler',
+    'sass',
+    'cssmin',
     'explainjs',
     'connect',
     'casper',
@@ -149,6 +175,7 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'replace',
     'jshint',
+    'sass',
     'connect',
     'casper'
   ]);
