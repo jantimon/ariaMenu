@@ -30,11 +30,24 @@ Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
  + Size (minfied)
     **2.3** KB
  + Size (original with comments)
-    **8.99** Kb
+    **9.0** Kb
 
 ## Documentation ##
 
-**[docs (explainJS)](http://jantimon.github.io/ariaMenu/docs/explain.html)**.
+**[Source code (explainJS)](http://jantimon.github.io/ariaMenu/docs/explain.html)**
+
+**Files**
+
+  <code>grunt</code> tests, compiles and minfies the source code.
+  All built results are copied to the "dist" folder:
+
+  + [dist](https://github.com/jantimon/ariaMenu/tree/master/dist)
+    + [ariaMenu.dev.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.dev.js) (Javascript with comments)
+    + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
+    + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
+    + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
+    + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified javascript)
+    + [ariaMenu.min.js.map](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js.map) (Sourcemap)
 
 ## Tests ##
 
