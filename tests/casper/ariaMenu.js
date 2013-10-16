@@ -177,6 +177,26 @@
       });
     })
 
+
+    /**
+     * Press {tab} and assert that the correct element is focused
+     */
+    .then(function () {
+      this.page.sendEvent('keypress', this.page.event.key.Tab);
+      this.wait(150, function () {
+        capture('screenshots/focus-test.png', '.aria-menu');
+        this.test.assertSelectorHasText('.menuitem-focus', 'One Service');
+      });
+    })
+
+
+    /* Capture screenshot for the readme preview */
+    .then(function () {
+      this.wait(250, function () {
+        capture('screenshots/preview.png', '.aria-menu');
+      });
+    })
+
     .run(function () {
       this.test.done();
     });

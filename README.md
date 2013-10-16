@@ -8,7 +8,7 @@ Using off-left positioning for hiding menus with support for showing menus on <c
   <code>:hover</code>. Includes proper <code>:focus</code> states for links. Uses jQuery to display menus on <code>:focus</code>.
   Also uses ARIA properties for menus.
 
-![CasperJS test screenshot](http://jantimon.github.io/ariaMenu/screenshots/focus-test.png)
+![CasperJS test screenshot](http://jantimon.github.io/ariaMenu/screenshots/preview.png)
 
 ## Demo ##
 
