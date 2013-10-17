@@ -9,13 +9,15 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
+    clean: ["dist", "screenshots"],
+
     replace: {
       dist: {
         options: {
           patterns: [
             {
-              // search for // @@ code @@ //
-              match: /\/\/\s*@+\s*code.*/,
+              // search for // @@ include @@ //
+              match: /\/\/\s*@+\s*include.*/,
               // replace it with the inner code
               replacement: function(){
                 // search for code between @@ start @@ and @@ end @@
@@ -54,7 +56,7 @@ module.exports = function (grunt) {
           compilation_level: 'ADVANCED_OPTIMIZATIONS',
           externs: ['closure_compiler/externs/**/*.js'],
           warning_level: 'verbose',
-          output_wrapper: '"/*! <%= pkg.copyright %> */(function(){%output%})();"',
+          output_wrapper: '"/*! <%= pkg.copyright %> */\n(function(){%output%}());"',
           create_source_map: 'dist/<%= pkg.name %>.min.js.map',
           source_map_format: 'V3'
       },
@@ -135,11 +137,11 @@ module.exports = function (grunt) {
         },
         files: [
           {
-            src: ['src/<%= pkg.name %>.scss'],
+            src: ['src/themes/minimal.scss'],
             dest: 'dist/<%= pkg.name %>.layout.css'
           },
           {
-            src: ['src/theme/default.scss'],
+            src: ['src/themes/default.scss'],
             dest: 'dist/<%= pkg.name %>.theme.css'
           }
         ]
@@ -148,9 +150,9 @@ module.exports = function (grunt) {
 
 
     cssmin: {
-      combine: {
+      minify: {
         files: {
-          'dist/<%= pkg.name %>.min.css': ['dist/<%= pkg.name %>.layout.css', 'dist/<%= pkg.name %>.theme.css']
+          'dist/<%= pkg.name %>.min.css': ['dist/<%= pkg.name %>.theme.css']
         }
       }
     }
@@ -161,6 +163,7 @@ module.exports = function (grunt) {
 
   // Default task(s).
   grunt.registerTask('default', [
+    'clean',
     'replace',
     'jshint',
     'closureCompiler',

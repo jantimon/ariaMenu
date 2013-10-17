@@ -13,6 +13,7 @@
     "grunt-replace": "~0.5.1",
     "grunt-contrib-sass": "0.5.0",
     "grunt-contrib-cssmin": "0.6.2",
+    "grunt-contrib-clean": "0.5.0",
     "grunt-explainjs": "",
     "grunt-bytesize": "",
     "grunt-casper": ""
