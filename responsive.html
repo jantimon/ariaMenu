@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>CSS Dropdown Menus</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="dist/ariaMenu.min.js"></script>
+  <link href="dist/ariaMenu.responsive.css" type="text/css" rel="stylesheet">
+  <!-- Demo styling -->
+  <style type="text/css">
+    p {
+      clear: both;
+    }
+
+    .code {
+      margin-top: 300px;
+      width: 100%;
+      border: 1px;
+      resize: none;
+      height: 700px;
+      font-family: monospace;
+    }
+
+    dd {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="example">
+
+<div class="content wide">
+  <article role="main">
+    <h1>CSS Dropdown Menus</h1>
+
+    <script>
+      jQuery(function ($) {
+        $(".aria-menu").ariaMenu()
+      });
+    </script>
+
+    <ul class="aria-menu css-fallback">
+      <li>
+        <a href="#">Menu</a>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li>
+            <a href="#">About</a>
+            <ul>
+              <li><a href="#">The Company</a></li>
+              <li><a href="#">The Team</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Services</a>
+            <ul>
+              <li><a href="#">One Service</a></li>
+              <li><a href="#">Two Service</a></li>
+              <li><a href="#">Three Service</a>
+                <ul>
+                  <li><a href="#">Setup</a></li>
+                  <li><a href="#">Implementation</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Four</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Products</a>
+            <ul>
+              <li><a href="#">Apples</a></li>
+              <li><a href="#">Oranges</a></li>
+              <li><a href="#">Grapes</a></li>
+              <li><a href="#">Pears</a></li>
+              <li><a href="#">Strawberries</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Contact Us</a>
+            <ul>
+              <li><a href="#">Store Hours</a></li>
+              <li><a href="#">Directions</a></li>
+              <li><a href="#">Staff Directory</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <textarea class="code">
+    </textarea>
+    <script>
+      // Copy code into textarea
+      $(".code").val($("<div/>").append($("ul.aria-menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
+    </script>
+
+  </article>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>

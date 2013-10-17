@@ -22,7 +22,7 @@
   }
 }
 
-@mixin aria-menu-horizontal-menu ($sub-menu-offset: 2.30em) {
+@mixin aria-menu-horizontal-menu ($sub-menu-offset: 99.9%) {
   // List menu items
   > li {
     /* Top level menu items */

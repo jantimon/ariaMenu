@@ -143,6 +143,10 @@ module.exports = function (grunt) {
           {
             src: ['src/themes/default.scss'],
             dest: 'dist/<%= pkg.name %>.theme.css'
+          },
+          {
+            src: ['src/themes/responsive.scss'],
+            dest: 'dist/<%= pkg.name %>.responsive.css'
           }
         ]
       }
