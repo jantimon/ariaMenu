@@ -28,9 +28,9 @@ Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
  + Size (minifed & gziped)
     **1.0** KB
  + Size (minfied)
-    **2.3** KB
+    **2.2** KB
  + Size (original with comments)
-    **9.0** Kb
+    **9.4** Kb
 
 ## Documentation ##
 

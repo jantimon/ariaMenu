@@ -93,6 +93,7 @@
 
       /* Triggered when an arrow key event bubbles to a root menu list item */
       arrowKeyDown: function (event) {
+        var _this = event.data;
         // Usually the event target is the focused link - so we pick the
         // parent to get the active listElement
         var $focusedListElement = $(event.target).closest('li'),
@@ -140,20 +141,23 @@
 
         // Check if the virtual cursor selected a sibling menu item
         if ($focusedMenu[0] === selectedMenu) {
-          $selectedListElement.find('>a').focus();
-          event.preventDefault();
+          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }
         // Check if the virtual cursor selected a sub menu
         else if ($subMenu[0] === selectedMenu) {
           // Select the first element in the sub menu
-          $subMenu.find('>li>a').first().focus();
-          event.preventDefault();
+          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }
         // Check if the virtual cursor selected a parent menu
         else if ($parentMenu[0] === selectedMenu) {
           // Select the parent list element
-          $parentListElement.find('>a').focus();
-          event.preventDefault();
+          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }
       }
     },
@@ -183,6 +187,27 @@
     find: function (selector) {
       return this.$elem.find(selector);
     },
+
+    /**
+     * Sets the focus to the first visible anchor child in this list element.
+     * The element might be an `ul` or a `li` element containing an `a` anchor.
+     *
+     * @param {HTMLElement} $element
+     * @returns {boolean}
+     */
+    selectListElement: function ($element) {
+      return $element
+        // Find the `a` tag starting from the `ul` or `li`:
+        .find('>li>a, >a')
+        // make sure that the anchor is visible
+        .filter(':visible:first')
+        // set the focus
+        .focus()
+        // as the filter selects only the first element the length
+        // can be either 0 or 1
+        .length === 1;
+    },
+
 
     /**
      * Add Aria roles and poperties
@@ -250,14 +275,14 @@
      * Return the element at the current courser position
      *
      * @param {string} [selector]
-     * @returns {HTMLElement|null}
+     * @returns {HTMLElement}
      */
     getElementBelowCursor: function (selector) {
       var $element = $(document.elementFromPoint(this.left, this.top));
-      if (selector && !$element.is(selector)) {
+      if (selector) {
         $element = $element.closest(selector);
       }
-      return $element || null;
+      return $element;
     }
   };
 
@@ -270,13 +295,6 @@
       if (!instance) {
         // create plugin instance and save it in data
         item.data('AriaMenu', new AriaMenu(this, opt));
-      } else {
-        // if instance already created call method
-        if (typeof opt === 'string') {
-          // slice arguments to leave only arguments after function name
-          var args = Array.prototype.slice.call(arguments, 1);
-          instance[opt].apply(instance, args);
-        }
       }
     });
   };

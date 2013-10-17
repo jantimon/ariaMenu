@@ -275,7 +275,8 @@
           <p>Triggered when an arrow key event bubbles to a root menu list item</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>      arrowKeyDown: function (event) {</pre>
+          <pre>      arrowKeyDown: function (event) {
+        var _this = event.data;</pre>
         </div>
       </div>
       <div class='clear'>
@@ -444,8 +445,9 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>        if ($focusedMenu[0] === selectedMenu) {
-          $selectedListElement.find('>a').focus();
-          event.preventDefault();
+          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }</pre>
         </div>
       </div>
@@ -468,8 +470,9 @@
           <p>Select the first element in the sub menu</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $subMenu.find('>li>a').first().focus();
-          event.preventDefault();
+          <pre>          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }</pre>
         </div>
       </div>
@@ -492,8 +495,9 @@
           <p>Select the parent list element</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $parentListElement.find('>a').focus();
-          event.preventDefault();
+          <pre>          if (_this.selectListElement($selectedListElement)) {
+            event.preventDefault();
+          }
         }
       }
     },
@@ -564,6 +568,65 @@
           <pre>    find: function (selector) {
       return this.$elem.find(selector);
     },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Sets the focus to the first visible anchor child in this list element.  The element might be an <code>ul</code> or a <code>li</code> element containing an <code>a</code> anchor.</p> <p>@param {HTMLElement} $element</p> <p>@returns {boolean}</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    selectListElement: function ($element) {
+      return $element</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Find the <code>a</code> tag starting from the <code>ul</code> or <code>li</code>:</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .find('>li>a, >a')</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>make sure that the anchor is visible</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .filter(':visible:first')</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>set the focus</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .focus()</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>as the filter selects only the first element the length  can be either 0 or 1</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .length === 1;
+    },
+
 </pre>
         </div>
       </div>
@@ -705,15 +768,15 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Return the element at the current courser position</p> <p>@param {string} [selector]</p> <p>@returns {HTMLElement|null}</p>
+          <p>Return the element at the current courser position</p> <p>@param {string} [selector]</p> <p>@returns {HTMLElement}</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>    getElementBelowCursor: function (selector) {
       var $element = $(document.elementFromPoint(this.left, this.top));
-      if (selector && !$element.is(selector)) {
+      if (selector) {
         $element = $element.closest(selector);
       }
-      return $element || null;
+      return $element;
     }
   };
 
@@ -743,31 +806,6 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>        item.data('AriaMenu', new AriaMenu(this, opt));
-      } else {</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>if instance already created call method</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if (typeof opt === 'string') {</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>slice arguments to leave only arguments after function name</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          var args = Array.prototype.slice.call(arguments, 1);
-          instance[opt].apply(instance, args);
-        }
       }
     });
   };
