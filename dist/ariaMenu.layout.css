@@ -6,8 +6,35 @@
 .aria-menu ul {
   /* Sub menus */
   position: absolute;
-  top: 2.30em;
   display: none;
+}
+.aria-menu li > a {
+  /* Menu links */
+  display: block;
+}
+.aria-menu ul.show-menu {
+  /* Sub menu active state (js) */
+  display: block;
+}
+
+.aria-menu > li {
+  /* Top level menu items */
+  float: left;
+  position: relative;
+}
+.aria-menu > li > a {
+  /* Top level nav items */
+  float: left;
+}
+.aria-menu > li > ul {
+  top: 2.3em;
+}
+.aria-menu ul > li {
+  position: relative;
+}
+.aria-menu ul > li > ul {
+  top: 0;
+  left: 100%;
 }
 .aria-menu.css-fallback ul {
   /*
@@ -17,27 +44,8 @@
   left: -999em;
   display: block;
 }
-.aria-menu li {
-  float: left;
-  position: relative;
-}
-.aria-menu li > a {
-  /* Top level nav items */
-  float: left;
-}
-.aria-menu ul.show-menu {
-  /* Sub menu active state (js) */
-  display: block;
-}
-.aria-menu.css-fallback li:hover ul, .aria-menu.css-fallback li:focus ul {
+.aria-menu.css-fallback li:hover ul,
+.aria-menu.css-fallback li:focus ul {
   /* Sub menu active state (css fallback only) */
   left: 0px;
-}
-.aria-menu ul li {
-  float: none;
-  position: static;
-}
-.aria-menu ul a {
-  float: none;
-  display: block;
 }

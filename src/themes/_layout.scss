@@ -1,0 +1,72 @@
+.aria-menu {
+  &, ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  ul {
+    /* Sub menus */
+    position: absolute;
+    display: none;
+  }
+
+  li > a {
+    /* Menu links */
+    display: block;
+  }
+
+  ul.show-menu {
+    /* Sub menu active state (js) */
+    display: block;
+  }
+}
+
+@mixin aria-menu-horizontal-menu ($sub-menu-offset: 2.30em) {
+  // List menu items
+  > li {
+    /* Top level menu items */
+    float: left;
+    position: relative;
+    & > a {
+      /* Top level nav items */
+      float: left;
+    }
+  }
+
+  // Sub menus
+  > li > ul {
+    top: $sub-menu-offset;
+  }
+}
+
+@mixin aria-menu-vertical-menu() {
+  > li {
+    position: relative;
+    > ul {
+      top: 0;
+      left: 100%;
+    }
+  }
+}
+
+
+// Fallback accessibility for browsers without javascript
+@mixin aria-menu-css-fallback {
+  &.css-fallback {
+    ul {
+      /*
+        Sub menus should be accessible for screen readers when used without javascript
+        http://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+      */
+      left: -999em;
+      display: block;
+    }
+
+    li:hover ul,
+    li:focus ul {
+      /* Sub menu active state (css fallback only) */
+      left: 0px;
+    }
+  }
+}

@@ -2,6 +2,25 @@
  *  This css theme is optional and should not be included in
  *  your page unless you want a very similar look like in our demo
  */
+.aria-menu, .aria-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aria-menu ul {
+  /* Sub menus */
+  position: absolute;
+  display: none;
+}
+.aria-menu li > a {
+  /* Menu links */
+  display: block;
+}
+.aria-menu ul.show-menu {
+  /* Sub menu active state (js) */
+  display: block;
+}
+
 .aria-menu {
   /* Top level nav */
   float: left;
@@ -15,6 +34,38 @@
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+.aria-menu > li {
+  /* Top level menu items */
+  float: left;
+  position: relative;
+}
+.aria-menu > li > a {
+  /* Top level nav items */
+  float: left;
+}
+.aria-menu > li > ul {
+  top: 2.3em;
+}
+.aria-menu ul > li {
+  position: relative;
+}
+.aria-menu ul > li > ul {
+  top: 0;
+  left: 100%;
+}
+.aria-menu.css-fallback ul {
+  /*
+    Sub menus should be accessible for screen readers when used without javascript
+    http://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+  */
+  left: -999em;
+  display: block;
+}
+.aria-menu.css-fallback li:hover ul,
+.aria-menu.css-fallback li:focus ul {
+  /* Sub menu active state (css fallback only) */
+  left: 0px;
 }
 .aria-menu ul {
   /* Dropdowns */

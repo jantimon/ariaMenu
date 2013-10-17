@@ -1,0 +1,14 @@
+@import "layout";
+
+.aria-menu {
+  // The root menu should be a horizontal menu
+  @include aria-menu-horizontal-menu();
+
+  // Sub menus should be vertical
+  ul {
+    @include aria-menu-vertical-menu();
+  }
+
+  // Add the default css fallback
+  @include aria-menu-css-fallback();
+}
