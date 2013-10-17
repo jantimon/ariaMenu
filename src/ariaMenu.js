@@ -45,8 +45,10 @@
           $(this).blur();
         }
       },
-
-      /* Triggered when a list item receives focus */
+      /**
+       * Triggered when a list item receives focus
+       * @param {jQuery.event} event
+       */
       listItemFocus: function (event) {
         var settings = event.data.settings;
         /* Show the sub menus */
@@ -58,7 +60,10 @@
           .attr('aria-hidden', false);
       },
 
-      /* Triggered when the focus is lost */
+      /**
+       * Triggered when the focus is lost
+       * @param {jQuery.event} event
+       */
       listItemBlur: function (event) {
         var settings = event.data.settings;
         /* Wait for a short moment and hide the sub menus */
@@ -74,7 +79,10 @@
           });
       },
 
-      /* Triggered when a key event bubbles to a root menu list item */
+      /**
+       * Triggered when a key event bubbles to a root menu list item
+       * @param {jQuery.event} event
+       */
       keyDown: function (event) {
         var _this = event.data;
 
@@ -88,10 +96,12 @@
         else if (event.which >= 37 && event.which <= 40) {
           _this.events.arrowKeyDown.apply(this, arguments);
         }
-
       },
 
-      /* Triggered when an arrow key event bubbles to a root menu list item */
+      /**
+       * Triggered when an arrow key event bubbles to a root menu list item
+       * @param {jQuery.event} event
+       */
       arrowKeyDown: function (event) {
         var _this = event.data;
         // Usually the event target is the focused link - so we pick the
@@ -192,7 +202,7 @@
      * Sets the focus to the first visible anchor child in this list element.
      * The element might be an `ul` or a `li` element containing an `a` anchor.
      *
-     * @param {HTMLElement} $element
+     * @param {jQuery} $element
      * @returns {boolean}
      */
     selectListElement: function ($element) {
