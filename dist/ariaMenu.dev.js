@@ -32,7 +32,7 @@
 
   AriaMenu.prototype = {
     /* Default settings */
-    // Single quotes are required for the google closure compiler:
+    // Single quoted keys are required for the google closure compiler:
     // http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
     defaults: {
       'focusClass': 'menuitem-focus',
@@ -261,7 +261,7 @@
 
   VirtualCursor.prototype = {
     /**
-     * Move the virtual cursor to the center of the given target
+     * Move the virtual cursor over the center of the given target
      *
      * @param {HTMLElement} target
      */
@@ -272,7 +272,7 @@
       // Set left and top value
       $.extend(this, $target.offset());
 
-      // Move virtual cursor in the middle of the focused element
+      // Move virtual cursor to the middle of the focused element
       // relative to the current scroll position
       this.top += 0.5 * $target.height() - $document.scrollTop();
       this.left += 0.5 * $target.width() - $document.scrollLeft();

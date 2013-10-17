@@ -20,7 +20,7 @@ Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
     + a sibling of the current menu item
     + a direct parent list element
     + the first list element of a sub menu
- + **Escape**  closes any focused menus.
+ + **Escape**  closes any open menus.
  + **Tabbing** allows cycling through every menu item.
 
 ## Size ##
