@@ -165,7 +165,7 @@
         // Check if the virtual cursor selected a parent menu
         else if ($parentMenu[0] === selectedMenu) {
           // Select the parent list element
-          if (_this.selectListElement($selectedListElement)) {
+          if (_this.selectListElement($parentListElement)) {
             event.preventDefault();
           }
         }

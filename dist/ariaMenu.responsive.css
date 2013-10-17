@@ -1,0 +1,204 @@
+/*
+ *  This css theme is optional and should not be included in
+ *  your page unless you want a very similar look like in our demo
+ */
+.aria-menu, .aria-menu ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.aria-menu ul {
+  /* Sub menus */
+  position: absolute;
+  display: none;
+}
+.aria-menu li > a {
+  /* Menu links */
+  display: block;
+}
+.aria-menu ul.show-menu {
+  /* Sub menu active state (js) */
+  display: block;
+}
+
+.aria-menu {
+  float: left;
+}
+@media screen and (max-width: 35em) {
+  .aria-menu {
+    /* Top level nav */
+    float: left;
+    background: #DDD;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
+    background-image: -moz-linear-gradient(top, #dddddd, #999999);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  .aria-menu > li > a {
+    min-width: 5em;
+    text-align: center;
+  }
+  .aria-menu ul {
+    display: none;
+  }
+  .aria-menu > li > ul > li {
+    position: relative;
+  }
+  .aria-menu > li > ul > li > ul {
+    top: 0;
+    left: 100%;
+  }
+  .aria-menu li > a {
+    /* Top level nav items */
+    padding: 0.8em 1em;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+  .aria-menu li:first-child a {
+    border-left: 0px none transparent;
+  }
+  .aria-menu li:last-child a {
+    border-right: 0px none transparent;
+  }
+  .aria-menu > .menuitem-focus > a {
+    /* Top level hover state, preserve hover state when hovering dropdown  */
+    background: #999;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
+    background-image: -moz-linear-gradient(top, #999999, #dddddd);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
+    outline: 0;
+  }
+  .aria-menu ul {
+    /* Dropdowns */
+    -webkit-transition: 0.1s linear opacity;
+    min-width: 150px;
+    background: #333;
+    background: rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  }
+  .aria-menu ul li a {
+    /* Drop down menu item */
+    padding: 0.6em 1em;
+    color: #FFF;
+    font-size: 0.9em;
+    border: 1px solid #222;
+    border-width: 0 0 1px;
+    -webkit-transition: 0.1s linear all;
+    background: transparent;
+    text-decoration: none;
+  }
+  .aria-menu ul .menuitem-focus > a {
+    /* Drop down menu item hover state  */
+    background: #EEE;
+    color: #333;
+    text-shadow: none;
+    outline: 0;
+  }
+}
+@media screen and (min-width: 35.01em) {
+  .aria-menu > li > a {
+    display: none;
+  }
+  .aria-menu > li > ul {
+    display: block;
+    /* Top level nav */
+    float: left;
+    background: #DDD;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
+    background-image: -moz-linear-gradient(top, #dddddd, #999999);
+    -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  }
+  .aria-menu > li > ul > li {
+    /* Top level menu items */
+    float: left;
+    position: relative;
+  }
+  .aria-menu > li > ul > li > a {
+    /* Top level nav items */
+    float: left;
+  }
+  .aria-menu > li > ul > li > ul {
+    top: 99.9%;
+  }
+  .aria-menu > li > ul li > a {
+    /* Top level nav items */
+    padding: 0.8em 1em;
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
+    color: #333;
+    font-weight: bold;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+  }
+  .aria-menu > li > ul li:first-child a {
+    border-left: 0px none transparent;
+  }
+  .aria-menu > li > ul li:last-child a {
+    border-right: 0px none transparent;
+  }
+  .aria-menu > li > ul > .menuitem-focus > a {
+    /* Top level hover state, preserve hover state when hovering dropdown  */
+    background: #999;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
+    background-image: -moz-linear-gradient(top, #999999, #dddddd);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
+    outline: 0;
+  }
+  .aria-menu ul ul {
+    /* Dropdowns */
+    -webkit-transition: 0.1s linear opacity;
+    min-width: 150px;
+    background: #333;
+    background: rgba(0, 0, 0, 0.9);
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  }
+  .aria-menu ul ul li a {
+    /* Drop down menu item */
+    padding: 0.6em 1em;
+    color: #FFF;
+    font-size: 0.9em;
+    border: 1px solid #222;
+    border-width: 0 0 1px;
+    -webkit-transition: 0.1s linear all;
+    background: transparent;
+    text-decoration: none;
+  }
+  .aria-menu ul ul .menuitem-focus > a {
+    /* Drop down menu item hover state  */
+    background: #EEE;
+    color: #333;
+    text-shadow: none;
+    outline: 0;
+  }
+}
+.aria-menu ul ul > li {
+  position: relative;
+}
+.aria-menu ul ul > li > ul {
+  top: 0;
+  left: 100%;
+}
+.aria-menu.css-fallback ul {
+  /*
+    Sub menus should be accessible for screen readers when used without javascript
+    http://developer.yahoo.com/blogs/ydn/clip-hidden-content-better-accessibility-53456.html
+  */
+  left: -999em;
+  display: block;
+}
+.aria-menu.css-fallback li:hover ul,
+.aria-menu.css-fallback li:focus ul {
+  /* Sub menu active state (css fallback only) */
+  left: 0px;
+}

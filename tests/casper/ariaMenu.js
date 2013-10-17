@@ -3,6 +3,8 @@
 (function () {
   'use strict';
 
+  var base_url = 'http://localhost:' + casper.cli.options.port;
+
   /**
    * Capture a screenshot with all child elements
    *
@@ -36,7 +38,7 @@
 
 
   casper
-    .start('http://localhost:' + casper.cli.options.port)
+    .start(base_url)
     .viewport(1024, 768)
 
   /**
@@ -194,6 +196,51 @@
     .then(function () {
       this.wait(250, function () {
         capture('screenshots/preview.png', '.aria-menu');
+      });
+    })
+
+
+    /* Responsive tests */
+    .thenOpen(base_url + '/responsive.html', function () {
+      this.evaluate(function () {
+        jQuery('.aria-menu a:visible:first').focus();
+      });
+      this.wait(150, function () {
+        capture('screenshots/responsive.png', '.aria-menu');
+      });
+    })
+
+    /* Test third level navigation */
+    .then(function(){
+      this.page.sendEvent('keypress', this.page.event.key.Right);
+      this.page.sendEvent('keypress', this.page.event.key.Right);
+      this.page.sendEvent('keypress', this.page.event.key.Down);
+      this.page.sendEvent('keypress', this.page.event.key.Down);
+      this.page.sendEvent('keypress', this.page.event.key.Down);
+      this.page.sendEvent('keypress', this.page.event.key.Right);
+
+      this.wait(150, function () {
+        capture('screenshots/focus-test.png', '.aria-menu');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Setup');
+      });
+    })
+
+    /* Scale down */
+    .then(function(){
+      this.viewport(450, 600);
+      this.wait(250, function () {
+        capture('screenshots/responsive.png', '.aria-menu');
+      });
+    })
+
+
+    .then(function () {
+      this.page.sendEvent('keypress', this.page.event.key.Left);
+      this.page.sendEvent('keypress', this.page.event.key.Backtab);
+
+      this.wait(150, function () {
+        capture('screenshots/focus-test.png', '.aria-menu');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Two Service');
       });
     })
 

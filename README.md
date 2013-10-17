@@ -9,10 +9,13 @@ Using off-left positioning for hiding menus with support for showing menus on <c
   Also uses ARIA properties for menus.
 
 ![CasperJS test screenshot](http://jantimon.github.io/ariaMenu/screenshots/preview.png)
+![CasperJS responsive screenshot](http://jantimon.github.io/ariaMenu/screenshots/responsive.png)
 
 ## Demo ##
 
-Try the gh-pages branch **[live demo](http://jantimon.github.io/ariaMenu/)**.
+ + **[Default layout](http://jantimon.github.io/ariaMenu/)**
+ + **[Responsive layout ](http://jantimon.github.io/ariaMenu/responsive.html)**
+
 
 ## Features ##
 
