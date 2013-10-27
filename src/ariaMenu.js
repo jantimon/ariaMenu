@@ -56,8 +56,7 @@
           .stop()
           .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings['focusedSubMenuClass'])
-          .attr('aria-hidden', false);
+          .addClass(settings['focusedSubMenuClass']);
       },
 
       /**
@@ -73,8 +72,7 @@
           .queue(function (next) {
             $(this).removeClass(settings['focusClass'])
               .find('>ul')
-              .removeClass(settings['focusedSubMenuClass'])
-              .attr('aria-hidden', true);
+              .removeClass(settings['focusedSubMenuClass']);
             next();
           });
       },
@@ -233,9 +231,6 @@
       this.find('li').attr('role', 'menuitem');
 
       this.find('a+ul')
-        // Add ARIA role to sub menus
-        // http://www.w3.org/TR/wai-aria/roles#menu
-        .attr({ 'aria-hidden': 'true', 'role': 'menu' })
         // Adding aria-haspopup for appropriate items
         // http://www.w3.org/TR/wai-aria/states_and_properties#aria-haspopup
         .each(function () {
