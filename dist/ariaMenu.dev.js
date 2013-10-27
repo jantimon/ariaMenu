@@ -18,6 +18,15 @@
   'use strict';
   
   /**
+   * Returns true if the browser supports touch events
+   *
+   * @return {boolean}
+   */
+  function supportsTouch(){
+    return 'ontouchstart' in window || 'onmsgesturechange' in window;
+  }
+
+  /**
    * The menu class
    *
    * @param {HTMLElement} item
@@ -41,19 +50,37 @@
     },
 
     events: {
-      /* Triggered when the user moves his mouse over a list item */
+
+      /* Triggered if the users clicks a link */
+      linkMouseClick: function () {
+      },
+
+      /* Triggered if the users touches a link */
+      linkTouch: function (event) {
+        // Get the links parent element
+        var $touchedListElement = $(this).parent();
+        // Search for a sub menu and pick the first link
+        var $firstLinkChildElement = $touchedListElement.find('>ul>li>a').first();
+        // If a first sub menu could be found select it and prevent executing this link
+        if ($firstLinkChildElement.length) {
+          $firstLinkChildElement.focus();
+          event.preventDefault();
+        }
+      },
+
+       /* Triggered if the user moves his mouse over a list item */
       listItemMouseOver: function () {
         $(this).focus();
       },
 
-      /* Triggered when the user moves his mouse away from a list item */
+      /* Triggered if the user moves his mouse away from a list item */
       listItemMouseOut: function () {
         if ($(this).is(':focus')) {
           $(this).blur();
         }
       },
       /**
-       * Triggered when a list item receives focus
+       * Triggered if a list item receives focus
        * @param {jQuery.event} event
        */
       listItemFocus: function (event) {
@@ -63,12 +90,11 @@
           .stop()
           .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings['focusedSubMenuClass'])
-          .attr('aria-hidden', false);
+          .addClass(settings['focusedSubMenuClass']);
       },
 
       /**
-       * Triggered when the focus is lost
+       * Triggered if the focus is lost
        * @param {jQuery.event} event
        */
       listItemBlur: function (event) {
@@ -80,14 +106,13 @@
           .queue(function (next) {
             $(this).removeClass(settings['focusClass'])
               .find('>ul')
-              .removeClass(settings['focusedSubMenuClass'])
-              .attr('aria-hidden', true);
+              .removeClass(settings['focusedSubMenuClass']);
             next();
           });
       },
 
       /**
-       * Triggered when a key event bubbles to a root menu list item
+       * Triggered if a key event bubbles to a root menu list item
        * @param {jQuery.event} event
        */
       keyDown: function (event) {
@@ -106,7 +131,7 @@
       },
 
       /**
-       * Triggered when an arrow key event bubbles to a root menu list item
+       * Triggered if an arrow key event bubbles to a root menu list item
        * @param {jQuery.event} event
        */
       arrowKeyDown: function (event) {
@@ -191,10 +216,13 @@
         .on('mouseover', 'a', this, this.events.listItemMouseOver)
         .on('mouseout', 'a', this, this.events.listItemMouseOut)
         .on('keydown', '>li', this, this.events.keyDown)
+        .on('click', 'a', this, supportsTouch() ? this.events.linkTouch : this.events.linkMouseClick)
         // Disable the css fallback
         .removeClass('css-fallback')
         // Add aria-menu class
-        .addClass('aria-menu');
+        .addClass('aria-menu')
+        // Touch support
+        .addClass((supportsTouch() ? 'has' : 'no') + '-touch');
 
     },
 
@@ -240,9 +268,6 @@
       this.find('li').attr('role', 'menuitem');
 
       this.find('a+ul')
-        // Add ARIA role to sub menus
-        // http://www.w3.org/TR/wai-aria/roles#menu
-        .attr({ 'aria-hidden': 'true', 'role': 'menu' })
         // Adding aria-haspopup for appropriate items
         // http://www.w3.org/TR/wai-aria/states_and_properties#aria-haspopup
         .each(function () {
@@ -305,7 +330,7 @@
 
 
   // jQuery plugin interface
-  // Use quoted notation for ADVANCED_OPTIMIZATIONS
+  // Use quoted notation for the closure compiler ADVANCED_OPTIMIZATIONS mode
   $['fn']['ariaMenu'] = function (opt) {
     return this.each(function () {
       var item = $(this), instance = item.data('AriaMenu');

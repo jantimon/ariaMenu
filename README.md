@@ -29,11 +29,11 @@ Using off-left positioning for hiding menus with support for showing menus on <c
 ## Size ##
 
  + Size (minifed & gziped)
-    **1.0** KB
+    **1.1** KB
  + Size (minfied)
-    **2.2** KB
+    **2.4** KB
  + Size (original with comments)
-    **9.4** Kb
+    **10.5** Kb
 
 ## Documentation ##
 

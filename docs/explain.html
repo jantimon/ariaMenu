@@ -91,6 +91,20 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Returns true if the browser supports touch events</p> <p>@return {boolean}</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  function supportsTouch(){
+    return 'ontouchstart' in window || 'onmsgesturechange' in window;
+  }
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
           <p>The menu class</p> <p>@param {HTMLElement} item</p> <p>@param {Array} [options]</p> <p>@constructor</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
@@ -117,7 +131,8 @@
       'closeDelay': 100
     },
 
-    events: {</pre>
+    events: {
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -125,7 +140,69 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when the user moves his mouse over a list item</p>
+          <p>Triggered if the users clicks a link</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      linkMouseClick: function () {
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered if the users touches a link</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      linkTouch: function (event) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the links parent element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        var $touchedListElement = $(this).parent();</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Search for a sub menu and pick the first link</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        var $firstLinkChildElement = $touchedListElement.find('>ul>li>a').first();</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>If a first sub menu could be found select it and prevent executing this link</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        if ($firstLinkChildElement.length) {
+          $firstLinkChildElement.focus();
+          event.preventDefault();
+        }
+      },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Triggered if the user moves his mouse over a list item</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemMouseOver: function () {
@@ -139,7 +216,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when the user moves his mouse away from a list item</p>
+          <p>Triggered if the user moves his mouse away from a list item</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemMouseOut: function () {
@@ -154,7 +231,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when a list item receives focus</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if a list item receives focus</p> <p>@param {jQuery.event} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemFocus: function (event) {
@@ -173,8 +250,7 @@
           .stop()
           .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings['focusedSubMenuClass'])
-          .attr('aria-hidden', false);
+          .addClass(settings['focusedSubMenuClass']);
       },
 </pre>
         </div>
@@ -184,7 +260,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when the focus is lost</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if the focus is lost</p> <p>@param {jQuery.event} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemBlur: function (event) {
@@ -205,8 +281,7 @@
           .queue(function (next) {
             $(this).removeClass(settings['focusClass'])
               .find('>ul')
-              .removeClass(settings['focusedSubMenuClass'])
-              .attr('aria-hidden', true);
+              .removeClass(settings['focusedSubMenuClass']);
             next();
           });
       },
@@ -218,7 +293,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when a key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if a key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      keyDown: function (event) {
@@ -270,7 +345,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered when an arrow key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if an arrow key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      arrowKeyDown: function (event) {
@@ -527,7 +602,8 @@
         .on('focusout', 'li', this, this.events.listItemBlur)
         .on('mouseover', 'a', this, this.events.listItemMouseOver)
         .on('mouseout', 'a', this, this.events.listItemMouseOut)
-        .on('keydown', '>li', this, this.events.keyDown)</pre>
+        .on('keydown', '>li', this, this.events.keyDown)
+        .on('click', 'a', this, supportsTouch() ? this.events.linkTouch : this.events.linkMouseClick)</pre>
         </div>
       </div>
       <div class='clear'>
@@ -549,7 +625,18 @@
           <p>Add aria-menu class</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        .addClass('aria-menu');
+          <pre>        .addClass('aria-menu')</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Touch support</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        .addClass((supportsTouch() ? 'has' : 'no') + '-touch');
 
     },
 </pre>
@@ -669,17 +756,6 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Add ARIA role to sub menus  http://www.w3.org/TR/wai-aria/roles#menu</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        .attr({ 'aria-hidden': 'true', 'role': 'menu' })</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
           <p>Adding aria-haspopup for appropriate items  http://www.w3.org/TR/wai-aria/states<em>and</em>properties#aria-haspopup</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
@@ -786,7 +862,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>jQuery plugin interface  Use quoted notation for ADVANCED_OPTIMIZATIONS</p>
+          <p>jQuery plugin interface  Use quoted notation for the closure compiler ADVANCED_OPTIMIZATIONS mode</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>  $['fn']['ariaMenu'] = function (opt) {
