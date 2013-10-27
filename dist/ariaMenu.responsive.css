@@ -101,6 +101,10 @@
     text-shadow: none;
     outline: 0;
   }
+  .aria-menu ul a[aria-haspopup]:after {
+    content: "\25B6";
+    float: right;
+  }
 }
 @media screen and (min-width: 35.01em) {
   .aria-menu > li > a {

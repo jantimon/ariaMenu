@@ -88,14 +88,20 @@
     ul {
       display: none;
     }
-    // The root menu should be a horizontal menu
+    // The root menu should be a vertical menu
     > li > ul {
       @include aria-menu-vertical-menu();
     }
     // Theming
     @include aria-menu-first-level();
+
+    // Sub menus should be vertical menus
     ul {
       @include aria-menu-second-level();
+      a[aria-haspopup]:after {
+        content: "\25B6";
+        float: right;
+      }
     }
   }
 
