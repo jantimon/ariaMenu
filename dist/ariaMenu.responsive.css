@@ -1,6 +1,9 @@
 /*
- *  This css theme is optional and should not be included in
- *  your page unless you want a very similar look like in our demo
+ *  This is an example how you might structure the css for a responsive
+ *  design. It's recommended to use only the layout part and do the theming
+ *  on your own.
+ *
+ *  See src/themes/_layout.scss
  */
 .aria-menu, .aria-menu ul {
   margin: 0;
@@ -21,6 +24,10 @@
   display: block;
 }
 
+/*
+ *  This css theme is optional and should not be included in
+ *  your page unless you want a very similar look like in our demo
+ */
 .aria-menu {
   float: left;
 }
@@ -94,16 +101,17 @@
     background: transparent;
     text-decoration: none;
   }
+  .aria-menu ul li a[aria-haspopup]:after {
+    /* ▶ */
+    content: "\25B6";
+    float: right;
+  }
   .aria-menu ul .menuitem-focus > a {
     /* Drop down menu item hover state  */
     background: #EEE;
     color: #333;
     text-shadow: none;
     outline: 0;
-  }
-  .aria-menu ul a[aria-haspopup]:after {
-    content: "\25B6";
-    float: right;
   }
 }
 @media screen and (min-width: 35.01em) {
@@ -177,6 +185,11 @@
     -webkit-transition: 0.1s linear all;
     background: transparent;
     text-decoration: none;
+  }
+  .aria-menu ul ul li a[aria-haspopup]:after {
+    /* ▶ */
+    content: "\25B6";
+    float: right;
   }
   .aria-menu ul ul .menuitem-focus > a {
     /* Drop down menu item hover state  */

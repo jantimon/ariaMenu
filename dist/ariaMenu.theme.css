@@ -1,6 +1,9 @@
 /*
- *  This css theme is optional and should not be included in
- *  your page unless you want a very similar look like in our demo
+ *  This is an example how you might structure the css for a NON responsive
+ *  design. It's recommended to use only the layout part and do the theming
+ *  on your own.
+ *
+ *  See src/themes/_layout.scss
  */
 .aria-menu, .aria-menu ul {
   margin: 0;
@@ -21,16 +24,16 @@
   display: block;
 }
 
+/*
+ *  This css theme is optional and should not be included in
+ *  your page unless you want a very similar look like in our demo
+ */
 .aria-menu {
   /* Top level nav */
   float: left;
-  margin: 20px 0;
   background: #DDD;
   background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
   background-image: -moz-linear-gradient(top, #dddddd, #999999);
-  -webkit-border-radius: 7px;
-  -moz-border-radius: 7px;
-  border-radius: 7px;
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
@@ -47,12 +50,69 @@
 .aria-menu > li > ul {
   top: 99.9%;
 }
+.aria-menu li > a {
+  /* Top level nav items */
+  padding: 0.8em 1em;
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+  color: #333;
+  font-weight: bold;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+}
+.aria-menu li:first-child a {
+  border-left: 0px none transparent;
+}
+.aria-menu li:last-child a {
+  border-right: 0px none transparent;
+}
+.aria-menu > .menuitem-focus > a {
+  /* Top level hover state, preserve hover state when hovering dropdown  */
+  background: #999;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
+  background-image: -moz-linear-gradient(top, #999999, #dddddd);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
+  outline: 0;
+}
+.aria-menu ul {
+  /* Dropdowns */
+  -webkit-transition: 0.1s linear opacity;
+  min-width: 150px;
+  background: #333;
+  background: rgba(0, 0, 0, 0.9);
+  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+}
 .aria-menu ul > li {
   position: relative;
 }
 .aria-menu ul > li > ul {
   top: 0;
   left: 100%;
+}
+.aria-menu ul li a {
+  /* Drop down menu item */
+  padding: 0.6em 1em;
+  color: #FFF;
+  font-size: 0.9em;
+  border: 1px solid #222;
+  border-width: 0 0 1px;
+  -webkit-transition: 0.1s linear all;
+  background: transparent;
+  text-decoration: none;
+}
+.aria-menu ul li a[aria-haspopup]:after {
+  /* ▶ */
+  content: "\25B6";
+  float: right;
+}
+.aria-menu ul .menuitem-focus > a {
+  /* Drop down menu item hover state  */
+  background: #EEE;
+  color: #333;
+  text-shadow: none;
+  outline: 0;
 }
 .aria-menu.css-fallback ul {
   /*
@@ -66,79 +126,4 @@
 .aria-menu.css-fallback li:focus ul {
   /* Sub menu active state (css fallback only) */
   left: 0px;
-}
-.aria-menu ul {
-  /* Dropdowns */
-  -webkit-transition: 0.1s linear opacity;
-  min-width: 150px;
-  background: #333;
-  background: rgba(0, 0, 0, 0.9);
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-}
-.aria-menu li > a {
-  /* Top level nav items */
-  padding: 10px 15px;
-  border-left: 1px solid rgba(255, 255, 255, 0.4);
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-  color: #333;
-  font-weight: bold;
-  font-size: 14px;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
-  text-decoration: none;
-}
-.aria-menu .menuitem-focus > a, .aria-menu.css-fallback li > a:hover, .aria-menu.css-fallback li > a:focus, .aria-menu.css-fallback li:focus > a, .aria-menu.css-fallback li:hover > a {
-  /* Top level hover state, preserve hover state when hovering dropdown  */
-  background: #999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
-  background-image: -moz-linear-gradient(top, #999999, #dddddd);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
-  outline: 0;
-}
-.aria-menu > li:first-child > a {
-  /* Rounded corners for first top level nav item */
-  border-left: 0;
-  -webkit-border-top-left-radius: 7px;
-  -webkit-border-bottom-left-radius: 7px;
-  -moz-border-radius-topleft: 7px;
-  -moz-border-radius-bottomleft: 7px;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
-}
-.aria-menu > li:last-child > a {
-  /* Rounded corners for last top level nav item */
-  border-right: 0;
-  -webkit-border-top-right-radius: 7px;
-  -webkit-border-bottom-right-radius: 7px;
-  -moz-border-radius-topright: 7px;
-  -moz-border-radius-bottomright: 7px;
-  border-top-right-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-.aria-menu ul a {
-  /* Drop down menu item */
-  color: #FFF;
-  font-size: 12px;
-  text-shadow: none;
-  border: 1px solid #222;
-  border-width: 0 0 1px;
-  -webkit-transition: 0.1s linear all;
-}
-.aria-menu ul,
-.aria-menu ul li:last-child a {
-  /* Rounded corners for ul and last list item */
-  border: 0;
-  -webkit-border-bottom-left-radius: 7px;
-  -webkit-border-bottom-right-radius: 7px;
-  -moz-border-radius-bottomleft: 7px;
-  -moz-border-radius-bottomright: 7px;
-  border-bottom-left-radius: 7px;
-  border-bottom-right-radius: 7px;
-}
-.aria-menu ul .menuitem-focus > a, .aria-menu.css-fallback ul a:hover, .aria-menu.css-fallback ul a:focus {
-  /* Drop down menu item hover state  */
-  background: #EEE;
-  color: #333;
-  text-shadow: none;
 }
