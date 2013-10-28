@@ -5,20 +5,25 @@
  *
  *  See src/themes/_layout.scss
  */
-.aria-menu, .aria-menu ul {
+
+.aria-menu,
+.aria-menu ul {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+
 .aria-menu ul {
   /* Sub menus */
   position: absolute;
   display: none;
 }
+
 .aria-menu li > a {
   /* Menu links */
   display: block;
 }
+
 .aria-menu ul.show-menu {
   /* Sub menu active state (js) */
   display: block;
@@ -28,28 +33,33 @@
  *  This css theme is optional and should not be included in
  *  your page unless you want a very similar look like in our demo
  */
+
 .aria-menu {
   /* Top level nav */
   float: left;
   background: #DDD;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#999999));
-  background-image: -moz-linear-gradient(top, #dddddd, #999999);
+  background-image: -webkit-gradient(linear, top left, bottom left, from(#dddddd), to(#999999));
+  background-image: -webkit-linear-gradient(top, #dddddd, #999999);
+  background-image: linear-gradient(top, #dddddd, #999999);
   -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
+
 .aria-menu > li {
   /* Top level menu items */
   float: left;
   position: relative;
 }
+
 .aria-menu > li > a {
   /* Top level nav items */
   float: left;
 }
+
 .aria-menu > li > ul {
   top: 99.9%;
 }
+
 .aria-menu li > a {
   /* Top level nav items */
   padding: 0.8em 1em;
@@ -60,37 +70,45 @@
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4), 0 -1px 0 rgba(0, 0, 0, 0.2);
   text-decoration: none;
 }
+
 .aria-menu li:first-child a {
   border-left: 0px none transparent;
 }
+
 .aria-menu li:last-child a {
   border-right: 0px none transparent;
 }
+
 .aria-menu > .menuitem-focus > a {
   /* Top level hover state, preserve hover state when hovering dropdown  */
   background: #999;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
-  background-image: -moz-linear-gradient(top, #999999, #dddddd);
+  background-image: -webkit-gradient(linear, top left, bottom left, from(#999999), to(#dddddd));
+  background-image: -webkit-linear-gradient(top, #999999, #dddddd);
+  background-image: linear-gradient(top, #999999, #dddddd);
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
   outline: 0;
 }
+
 .aria-menu ul {
   /* Dropdowns */
   -webkit-transition: 0.1s linear opacity;
+  transition: 0.1s linear opacity;
   min-width: 150px;
   background: #333;
   background: rgba(0, 0, 0, 0.9);
   -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
 }
+
 .aria-menu ul > li {
   position: relative;
 }
+
 .aria-menu ul > li > ul {
   top: 0;
   left: 100%;
 }
+
 .aria-menu ul li a {
   /* Drop down menu item */
   padding: 0.6em 1em;
@@ -99,14 +117,17 @@
   border: 1px solid #222;
   border-width: 0 0 1px;
   -webkit-transition: 0.1s linear all;
+  transition: 0.1s linear all;
   background: transparent;
   text-decoration: none;
 }
+
 .aria-menu ul li a[aria-haspopup]:after {
   /* ▶ */
   content: "\25B6";
   float: right;
 }
+
 .aria-menu ul .menuitem-focus > a {
   /* Drop down menu item hover state  */
   background: #EEE;
@@ -114,6 +135,7 @@
   text-shadow: none;
   outline: 0;
 }
+
 .aria-menu.css-fallback ul {
   /*
     Sub menus should be accessible for screen readers when used without javascript
@@ -122,6 +144,7 @@
   left: -999em;
   display: block;
 }
+
 .aria-menu.css-fallback li:hover ul,
 .aria-menu.css-fallback li:focus ul {
   /* Sub menu active state (css fallback only) */

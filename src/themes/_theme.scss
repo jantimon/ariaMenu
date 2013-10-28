@@ -7,11 +7,8 @@
   /* Top level nav */
   float: left;
   background: #DDD;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#DDD), to(#999));
-  background-image: -moz-linear-gradient(top, #DDD, #999);
+  background-image: linear-gradient(top, #DDD, #999);
 
-  -webkit-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-  -moz-box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 
   li {
@@ -36,8 +33,7 @@
   > .menuitem-focus > a {
     /* Top level hover state, preserve hover state when hovering dropdown  */
     background: #999;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#999), to(#DDD));
-    background-image: -moz-linear-gradient(top, #999, #DDD);
+    background-image: linear-gradient(top, #999, #DDD);
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), 0 -1px 0 rgba(255, 255, 255, 0.2);
     outline: 0;
   }
@@ -45,14 +41,12 @@
 
 @mixin aria-menu-second-level() {
   /* Dropdowns */
-  -webkit-transition: 0.1s linear opacity;
+  transition: 0.1s linear opacity;
 
   min-width: 150px;
   background: #333;
   background: rgba(0, 0, 0, 0.9);
 
-  -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
-  -moz-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
   box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
 
   li a {
@@ -62,7 +56,7 @@
     font-size: 0.9em;
     border: 1px solid #222;
     border-width: 0 0 1px;
-    -webkit-transition: 0.1s linear all;
+    transition: 0.1s linear all;
     background: transparent;
     text-decoration: none;
     // Add right arrow ▶ for links with sub menus
