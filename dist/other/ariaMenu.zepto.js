@@ -1,15 +1,8 @@
-/** Copyright (c) 2013 Jan Nicklas Released under MIT license */
-
-// Closure compiler requires ['name'] notation
-// http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
+/* global jQuery: true, Zepto: true */
 /* jshint sub:true */
-
-/* global jQuery: true */
-
 (function ($) {
   'use strict';
-  // @@ start @@ //
-
+  //
   /**
    * Returns true if the browser supports touch events
    *
@@ -347,5 +340,5 @@
     });
   };
 
-  // @@ end @@ //
-}(jQuery));
+  
+}(jQuery || Zepto));

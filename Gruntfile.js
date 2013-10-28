@@ -2,35 +2,46 @@
 module.exports = function (grunt) {
   'use strict';
 
+  // Load package.json
+  var pkg = grunt.file.readJSON('package.json');
+
   // Automatically load npm tasks from package.json
   require('load-grunt-tasks')(grunt);
 
   // Project configuration.
   grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
+    pkg: pkg,
 
     clean: ["dist", "screenshots"],
 
-    replace: {
-      dist: {
-        options: {
-          patterns: [
-            {
-              // search for // @@ include @@ //
-              match: /\/\/\s*@+\s*include.*/,
-              // replace it with the inner code
-              replacement: function(){
-                // search for code between @@ start @@ and @@ end @@
-                var code = grunt.file.read('src/' + grunt.config.data.pkg.name + '.js');
-                code = code.replace(/^[\s\S]*\/\/\s*@@\s*start[^\n]*\n/g, '');
-                code = code.replace(/\/\/\s*@@\s*end[\s\S]*$/g, '');
-                return code;
-              }
-            }
-          ]
-        },
+    template: {
+      options: {
+        'data': {
+          code: (function () {
+            // search for code between @@ start @@ and @@ end @@
+            var code = grunt.file.read('src/' + pkg.name + '.js');
+            code = code.replace(/^[\s\S]*\/\/\s*@@\s*start[^\n]*\n/g, '');
+            code = code.replace(/\/\/\s*@@\s*end[\s\S]*$/g, '');
+            return code;
+          }())
+        }
+      },
+      // Build only the jquery wrapper
+      jquery: {
         files: [
-          {src: ['src/wrapper.js'], dest: 'dist/<%= pkg.name %>.dev.js'}
+          {src: ['src/wrapper/jquery.js'], dest: 'dist/<%= pkg.name %>.dev.js'}
+        ]
+      },
+      // Build the amd wrapper
+      amd: {
+        files: [
+          {src: ['src/wrapper/amd.js'], dest: 'dist/other/<%= pkg.name %>.amd.js'}
+        ]
+      },
+      // Build the Zepto wrapper
+      zepto: {
+        files: [
+          {src: ['src/wrapper/zepto.js'], dest: 'dist/other/<%= pkg.name %>.zepto.js'}
         ]
       }
     },
@@ -44,14 +55,7 @@ module.exports = function (grunt) {
 
     closureCompiler: {
       options: {
-        // [REQUIRED] Path to closure compiler
         compilerFile: 'closure_compiler/compiler.jar',
-
-        // [OPTIONAL] set to true if you want to check if files were modified
-        // before starting compilation (can save some time in large sourcebases)
-        checkModified: false,
-
-        // [OPTIONAL] Set Closure Compiler Directives here
         compilerOpts: {
           compilation_level: 'ADVANCED_OPTIMIZATIONS',
           externs: ['closure_compiler/externs/**/*.js'],
@@ -59,27 +63,23 @@ module.exports = function (grunt) {
           output_wrapper: '"/*! <%= pkg.copyright %> */\n(function(){%output%}());"',
           create_source_map: 'dist/<%= pkg.name %>.min.js.map',
           source_map_format: 'V3'
-      },
-        // [OPTIONAL] Set exec method options
+        },
         execOpts: {
-          /**
-           * Set maxBuffer if you got message "Error: maxBuffer exceeded."
-           * Node default: 200*1024
-           */
           maxBuffer: 999999 * 1024
         }
 
       },
-
-      // any name that describes your task
-      targetName: {
-
-        // [OPTIONAL] Target files to compile. Can be a string, an array of strings
-        // or grunt file syntax (<config:...>, *)
+      jquery: {
         src: 'dist/<%= pkg.name %>.dev.js',
-
-        // [OPTIONAL] set an output file
         dest: 'dist/<%= pkg.name %>.min.js'
+      },
+      amd: {
+        src: 'dist/other/<%= pkg.name %>.amd.js',
+        dest: 'dist/other/<%= pkg.name %>.amd.min.js'
+      },
+      zepto: {
+        src: 'dist/other/<%= pkg.name %>.zepto.js',
+        dest: 'dist/other/<%= pkg.name %>.zepto.min.js'
       }
     },
 
@@ -102,7 +102,7 @@ module.exports = function (grunt) {
     bytesize: {
       all: {
         src: [
-          'dist/*.js'
+          'dist/**/*.js'
         ]
       }
     },
@@ -119,15 +119,15 @@ module.exports = function (grunt) {
 
     // Phantom JS
     casper: {
+      options: {
+        test: true
+      },
+      test: {
         options: {
-          test: true
+          port: '<%= connect.www.options.port %>'
         },
-        test: {
-          options: {
-            port: '<%= connect.www.options.port %>'
-          },
-          src: ['tests/casper/<%= pkg.name %>.js']
-        }
+        src: ['tests/casper/<%= pkg.name %>.js']
+      }
     },
 
     sass: {
@@ -174,13 +174,28 @@ module.exports = function (grunt) {
   });
 
 
-
   // Default task(s).
   grunt.registerTask('default', [
     'clean',
-    'replace',
+    'template:jquery',
     'jshint',
-    'closureCompiler',
+    'closureCompiler:jquery',
+    'sass',
+    'autoprefixer',
+    'cssmin',
+    'bytesize'
+  ]);
+
+  // Full build and test
+  grunt.registerTask('build', [
+    'clean',
+    'template:jquery',
+    'template:amd',
+    'template:zepto',
+    'jshint',
+    'closureCompiler:amd',
+    'closureCompiler:zepto',
+    'closureCompiler:jquery',
     'sass',
     'autoprefixer',
     'cssmin',
@@ -190,10 +205,9 @@ module.exports = function (grunt) {
     'bytesize'
   ]);
 
+  // Test only
   grunt.registerTask('test', [
-    'replace',
-    'jshint',
-    'sass',
+    'default',
     'connect',
     'casper'
   ]);

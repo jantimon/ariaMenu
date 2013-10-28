@@ -1,22 +1,8 @@
-/** Copyright (c) 2013 Jan Nicklas Released under MIT license */
-
-/* global define: false, jQuery: true */
+/* global jQuery: true */
 /* jshint sub:true */
-
-// RequireJS amd factory
-// http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239
-(function (factory) {
+(function ($) {
   'use strict';
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['jquery'], factory);
-  } else {
-    // Run without AMD
-    factory(jQuery);
-  }
-}(function ($) {
-  'use strict';
-  
+  //
   /**
    * Returns true if the browser supports touch events
    *
@@ -81,7 +67,7 @@
       },
       /**
        * Triggered if a list item receives focus
-       * @param {jQuery.event} event
+       * @param {jQuery.event=} event
        */
       listItemFocus: function (event) {
         var settings = event.data.settings;
@@ -97,7 +83,7 @@
 
       /**
        * Triggered if the focus is lost
-       * @param {jQuery.event} event
+       * @param {jQuery.event=} event
        */
       listItemBlur: function (event) {
         var settings = event.data.settings;
@@ -112,7 +98,7 @@
 
       /**
        * Triggered if a key event bubbles to a root menu list item
-       * @param {jQuery.event} event
+       * @param {jQuery.event=} event
        */
       keyDown: function (event) {
         var _this = event.data;
@@ -131,7 +117,7 @@
 
       /**
        * Triggered if an arrow key event bubbles to a root menu list item
-       * @param {jQuery.event} event
+       * @param {jQuery.event=} event
        */
       arrowKeyDown: function (event) {
         var _this = event.data;
@@ -297,7 +283,7 @@
     /**
      * Move the virtual cursor over the center of the given target
      *
-     * @param {HTMLElement} target
+     * @param {HTMLElement|jQuery} target
      */
     moveOver: function (target) {
       var $target = $(target),
@@ -316,7 +302,7 @@
      * Return the element at the current courser position
      *
      * @param {string} [selector]
-     * @returns {HTMLElement}
+     * @returns {jQuery}
      */
     getElementBelowCursor: function (selector) {
       var $element = $(document.elementFromPoint(this.left, this.top));
@@ -335,7 +321,7 @@
    * @param {number=} [delay]
    */
   function debounce(element, callback, delay) {
-    clearTimeout($(element).data('am-delay'));
+    clearTimeout(parseInt($(element).data('am-delay'), 10));
     if (callback && delay) {
       $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
     }
@@ -355,4 +341,4 @@
   };
 
   
-}));
+}(jQuery));

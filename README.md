@@ -13,7 +13,6 @@ Using off-left positioning for hiding menus with support for showing menus on <c
 
 ## Demo ##
 
- + **[Default layout](http://jantimon.github.io/ariaMenu/)**
  + **[Responsive layout ](http://jantimon.github.io/ariaMenu/responsive.html)**
 
 

@@ -17,13 +17,14 @@
     "grunt-explainjs": "",
     "grunt-bytesize": "",
     "grunt-casper": "",
-    "grunt-autoprefixer": "~0.4.0"
+    "grunt-autoprefixer": "~0.4.0",
+    "grunt-template": "~0.2.1"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/jantimon/ariaMenu.git"
   },
   "scripts": {
-    "test": "grunt --verbose"
+    "test": "grunt test --verbose"
   }
 }

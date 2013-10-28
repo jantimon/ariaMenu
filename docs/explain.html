@@ -29,61 +29,11 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Copyright (c) 2013 Jan Nicklas Released under MIT license</p>
+          <p>global jQuery: true</p> <p>jshint sub:true</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre></pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>global define: false, jQuery: true  jshint sub:true</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre></pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>RequireJS amd factory  http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>(function (factory) {
-  'use strict';
-  if (typeof define === 'function' && define.amd) {</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>AMD. Register as an anonymous module.</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>    define(['jquery'], factory);
-  } else {</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Run without AMD</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>    factory(jQuery);
-  }
-}(function ($) {
-  'use strict';
-</pre>
+          <pre>(function ($) {
+  'use strict';</pre>
         </div>
       </div>
       <div class='clear'>
@@ -231,7 +181,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if a list item receives focus</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if a list item receives focus</p> <p>@param {jQuery.event=} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemFocus: function (event) {
@@ -271,7 +221,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if the focus is lost</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if the focus is lost</p> <p>@param {jQuery.event=} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemBlur: function (event) {
@@ -301,7 +251,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if a key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if a key event bubbles to a root menu list item</p> <p>@param {jQuery.event=} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      keyDown: function (event) {
@@ -353,7 +303,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if an arrow key event bubbles to a root menu list item</p> <p>@param {jQuery.event} event</p>
+          <p>Triggered if an arrow key event bubbles to a root menu list item</p> <p>@param {jQuery.event=} event</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      arrowKeyDown: function (event) {
@@ -810,7 +760,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Move the virtual cursor over the center of the given target</p> <p>@param {HTMLElement} target</p>
+          <p>Move the virtual cursor over the center of the given target</p> <p>@param {HTMLElement|jQuery} target</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>    moveOver: function (target) {
@@ -850,7 +800,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Return the element at the current courser position</p> <p>@param {string} [selector]</p> <p>@returns {HTMLElement}</p>
+          <p>Return the element at the current courser position</p> <p>@param {string} [selector]</p> <p>@returns {jQuery}</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>    getElementBelowCursor: function (selector) {
@@ -873,7 +823,7 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>  function debounce(element, callback, delay) {
-    clearTimeout($(element).data('am-delay'));
+    clearTimeout(parseInt($(element).data('am-delay'), 10));
     if (callback && delay) {
       $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
     }
@@ -910,7 +860,7 @@
   };
 
 
-}));.</pre>
+}(jQuery));.</pre>
         </div>
       </div>
       <div class='clear'>

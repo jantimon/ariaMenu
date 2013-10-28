@@ -1,15 +1,22 @@
 /** Copyright (c) 2013 Jan Nicklas Released under MIT license */
 
-// Closure compiler requires ['name'] notation
-// http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
+/* global define: false, jQuery: true */
 /* jshint sub:true */
 
-/* global jQuery: true */
-
-(function ($) {
+// RequireJS amd factory
+// http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239
+(function (factory) {
   'use strict';
-  // @@ start @@ //
-
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define(['jquery'], factory);
+  } else {
+    // Run without AMD
+    factory(jQuery);
+  }
+}(function ($) {
+  'use strict';
+  // src/ariaMenu.js 
   /**
    * Returns true if the browser supports touch events
    *
@@ -347,5 +354,5 @@
     });
   };
 
-  // @@ end @@ //
-}(jQuery));
+  
+}));

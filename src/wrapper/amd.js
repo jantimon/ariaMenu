@@ -16,5 +16,5 @@
   }
 }(function ($) {
   'use strict';
-  // @@ include ariaMenu.js @@ //
+  // src/ariaMenu.js <%= code %>
 }));
