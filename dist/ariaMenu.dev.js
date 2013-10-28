@@ -321,7 +321,7 @@
    * @param {number=} [delay]
    */
   function debounce(element, callback, delay) {
-    clearTimeout(parseInt($(element).data('am-delay'), 10));
+    clearTimeout(Number($(element).data('am-delay')));
     if (callback && delay) {
       $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
     }
