@@ -127,7 +127,7 @@
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>    defaults: {
       'focusClass': 'menuitem-focus',
-      'focusedSubMenuClass': 'show-menu',
+      'visibleMenuClass': 'show-menu',
       'closeDelay': 100
     },
 
@@ -243,14 +243,25 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Stop hiding this element (clear timeout from listItemBlur)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        debounce(this);
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
           <p>Show the sub menus</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>        $(this)
-          .stop()
           .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings['focusedSubMenuClass']);
+          .addClass(settings['visibleMenuClass']);
       },
 </pre>
         </div>
@@ -264,7 +275,8 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemBlur: function (event) {
-        var settings = event.data.settings;</pre>
+        var settings = event.data.settings;
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -275,15 +287,11 @@
           <p>Wait for a short moment and hide the sub menus</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        $(this)
-          .stop()
-          .delay(settings['closeDelay'])
-          .queue(function (next) {
-            $(this).removeClass(settings['focusClass'])
-              .find('>ul')
-              .removeClass(settings['focusedSubMenuClass']);
-            next();
-          });
+          <pre>        debounce(this, function () {
+          $(this).removeClass(settings['focusClass'])
+            .find('>ul')
+            .removeClass(settings['visibleMenuClass']);
+        }, settings['closeDelay']);
       },
 </pre>
         </div>
@@ -853,6 +861,23 @@
       return $element;
     }
   };
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Execute a function once per element after a given delay</p> <p>@param {HTMLElement|jQuery} element</p> <p>@param {function()=} [callback]</p> <p>@param {number=} [delay]</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  function debounce(element, callback, delay) {
+    clearTimeout($(element).data('am-delay'));
+    if (callback && delay) {
+      $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
+    }
+  }
 
 </pre>
         </div>

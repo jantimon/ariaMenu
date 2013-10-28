@@ -38,7 +38,7 @@
     // http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html
     defaults: {
       'focusClass': 'menuitem-focus',
-      'focusedSubMenuClass': 'show-menu',
+      'visibleMenuClass': 'show-menu',
       'closeDelay': 100
     },
 
@@ -78,12 +78,14 @@
        */
       listItemFocus: function (event) {
         var settings = event.data.settings;
-        /* Show the sub menus */
+        // Stop hiding this element (clear timeout from listItemBlur)
+        debounce(this);
+
+        // Show the sub menus
         $(this)
-          .stop()
           .addClass(settings['focusClass'])
           .find('>ul')
-          .addClass(settings['focusedSubMenuClass']);
+          .addClass(settings['visibleMenuClass']);
       },
 
       /**
@@ -92,16 +94,13 @@
        */
       listItemBlur: function (event) {
         var settings = event.data.settings;
-        /* Wait for a short moment and hide the sub menus */
-        $(this)
-          .stop()
-          .delay(settings['closeDelay'])
-          .queue(function (next) {
-            $(this).removeClass(settings['focusClass'])
-              .find('>ul')
-              .removeClass(settings['focusedSubMenuClass']);
-            next();
-          });
+
+        // Wait for a short moment and hide the sub menus
+        debounce(this, function () {
+          $(this).removeClass(settings['focusClass'])
+            .find('>ul')
+            .removeClass(settings['visibleMenuClass']);
+        }, settings['closeDelay']);
       },
 
       /**
@@ -320,6 +319,20 @@
       return $element;
     }
   };
+
+  /**
+   * Execute a function once per element after a given delay
+   *
+   * @param {HTMLElement|jQuery} element
+   * @param {function()=} [callback]
+   * @param {number=} [delay]
+   */
+  function debounce(element, callback, delay) {
+    clearTimeout($(element).data('am-delay'));
+    if (callback && delay) {
+      $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
+    }
+  }
 
 
   // jQuery plugin interface
