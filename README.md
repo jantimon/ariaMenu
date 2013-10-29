@@ -46,6 +46,7 @@ Using off-left positioning for hiding menus with support for showing menus on <c
     + [styles](https://github.com/jantimon/ariaMenu/tree/master/dist/styles) (Stylesheets)
       + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
       + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
+      + [ariaMenu.responsive.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.responsive.css) (Responsive theme and layout styles)
       + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
     + [ariaMenu.dev.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.dev.js) (Javascript with comments)
     + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified jQuery version)
@@ -87,6 +88,7 @@ Also note that [98.6% of people who are blind have Javascript enabled](http://we
   + **No** DOM structure changes
   + **No** <code>resize</code>-events
   + **No** <code>scroll</code>-events
+  + **No** css browser prefixes (thanks to [autoprefixer](https://github.com/ai/autoprefixer))
   + Lightweight
   + Separation of logic, layout and theming
   + Automated testing
