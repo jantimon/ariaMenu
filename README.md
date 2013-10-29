@@ -30,9 +30,7 @@ Using off-left positioning for hiding menus with support for showing menus on <c
  + Size (minifed & gziped)
     **1.1** KB
  + Size (minfied)
-    **2.4** KB
- + Size (original with comments)
-    **10.5** Kb
+    **2.44** KB
 
 ## Documentation ##
 
@@ -44,16 +42,53 @@ Using off-left positioning for hiding menus with support for showing menus on <c
   All built results are copied to the "dist" folder:
 
   + [dist](https://github.com/jantimon/ariaMenu/tree/master/dist)
+    + [other](https://github.com/jantimon/ariaMenu/tree/master/dist/other) (Zepto & AMD version)
     + [ariaMenu.dev.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.dev.js) (Javascript with comments)
     + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
     + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
     + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
-    + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified javascript)
+    + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified jQuery version)
     + [ariaMenu.min.js.map](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js.map) (Sourcemap)
+
+## Accessibility ##
+
+This menu is accessible for
+
+  + People who are blind (who cannot use devices such as mice that require eye-hand coordination)
+  + People with low vision (who may have trouble finding or tracking a pointer indicator on screen)
+  + Some people with hand tremors find using a mouse very difficult and therefore usually use a keyboard
+
+Guidelines to follow
+
+  + [WCAG 2.0 - Guideline 1.4.4: Resize text to 200%](http://www.w3.org/TR/UNDERSTANDING-WCAG20/visual-audio-contrast-scale.html)
+  + [WCAG 2.0 - Guideline 2.1: Make all functionality available from a keyboard.](http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation.html)
+  + [WCAG 2.0 - Guideline 2.1.2: No Keyboard Trap](http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-trapping.html)
+  + [WCAG 2.0 - Guideline 2.1.3: Keyboard (No Exception)](http://www.w3.org/TR/UNDERSTANDING-WCAG20/keyboard-operation-all-funcs.html)
+  + [WCAG 2.0 - Guideline 2.4.3: Focus Order](http://www.w3.org/TR/UNDERSTANDING-WCAG20/navigation-mechanisms-focus-order.html)
 
 ## Tests ##
 
+CasperJS Webkit tests
 [![Travis Build](https://api.travis-ci.org/jantimon/ariaMenu.png)](https://travis-ci.org/jantimon/ariaMenu)
+
+## Javascript? ##
+
+How can a javascript menu be accessible?
+This project provides a CSS fallback.
+
+Also note that [98.6% of people who are blind have Javascript enabled](http://webaim.org/projects/screenreadersurvey4/#javascript)
+
+## Design goals ##
+
+  + WCAG conform
+  + **No** inline styles
+  + **No** <code>!important</code> styles
+  + **No** DOM structure changes
+  + **No** <code>resize</code>-events
+  + **No** <code>scroll</code>-events
+  + Lightweight
+  + Separation of logic, layout and theming
+  + Automated testing
 
 ## Links ##
 
