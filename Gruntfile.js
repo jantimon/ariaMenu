@@ -102,7 +102,7 @@ module.exports = function (grunt) {
     bytesize: {
       all: {
         src: [
-          'dist/**/*.js'
+          'dist/**/*.min.js'
         ]
       }
     },
@@ -138,15 +138,15 @@ module.exports = function (grunt) {
         files: [
           {
             src: ['src/themes/minimal.scss'],
-            dest: 'dist/<%= pkg.name %>.layout.css'
+            dest: 'dist/styles/<%= pkg.name %>.layout.css'
           },
           {
             src: ['src/themes/default.scss'],
-            dest: 'dist/<%= pkg.name %>.theme.css'
+            dest: 'dist/styles/<%= pkg.name %>.theme.css'
           },
           {
             src: ['src/themes/responsive.scss'],
-            dest: 'dist/<%= pkg.name %>.responsive.css'
+            dest: 'dist/styles/<%= pkg.name %>.responsive.css'
           }
         ]
       }
@@ -158,7 +158,7 @@ module.exports = function (grunt) {
       },
       dist: {
         expand: true,
-        src: 'dist/*.css'
+        src: 'dist/styles/*.css'
       }
     },
 
@@ -166,7 +166,7 @@ module.exports = function (grunt) {
     cssmin: {
       minify: {
         files: {
-          'dist/<%= pkg.name %>.min.css': ['dist/<%= pkg.name %>.theme.css']
+          'dist/styles/<%= pkg.name %>.min.css': ['dist/styles/<%= pkg.name %>.theme.css']
         }
       }
     }

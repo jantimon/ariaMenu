@@ -43,10 +43,11 @@ Using off-left positioning for hiding menus with support for showing menus on <c
 
   + [dist](https://github.com/jantimon/ariaMenu/tree/master/dist)
     + [other](https://github.com/jantimon/ariaMenu/tree/master/dist/other) (Zepto & AMD version)
+    + [styles](https://github.com/jantimon/ariaMenu/tree/master/dist/styles) (Stylesheets)
+      + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
+      + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
+      + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
     + [ariaMenu.dev.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.dev.js) (Javascript with comments)
-    + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
-    + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
-    + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
     + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified jQuery version)
     + [ariaMenu.min.js.map](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js.map) (Sourcemap)
 
