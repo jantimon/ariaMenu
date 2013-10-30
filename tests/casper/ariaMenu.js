@@ -57,7 +57,7 @@
       // Test if the css-fallback class was removed
       this.test.assertEval(function () {
         return jQuery('.css-fallback').length === 0;
-      }, 'CSS-fallback was deactivated');
+      }, 'CSS-fallback was removed');
 
     })
 
@@ -71,7 +71,7 @@
       });
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Home');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Home', 'Third parties can focus a listElement using jQuery.focus()');
       });
     })
 
@@ -82,7 +82,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Tab);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'About');
+        this.test.assertSelectorHasText('.menuitem-focus', 'About', 'Siblings are accessible by using the TAB key');
       });
     })
 
@@ -93,7 +93,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Tab);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'The Company');
+        this.test.assertSelectorHasText('.menuitem-focus', 'The Company', 'Children are accessible by using the TAB key');
       });
     })
 
@@ -104,7 +104,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Tab);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'The Team');
+        this.test.assertSelectorHasText('.menuitem-focus', 'The Team', 'Siblings of sub menus are accessible by using the TAB key');
       });
     })
 
@@ -115,7 +115,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Tab);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Services');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Services', 'Pressing the TAB key while focusing the last listElement will focus the very next parent list element');
       });
     })
 
@@ -126,7 +126,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Right);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Products');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Products', 'The RIGHT ARROW key sets focus to the correct element');
       });
     })
 
@@ -137,7 +137,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Left);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Services');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Services', 'The LEFT ARROW key sets focus to the correct element');
       });
     })
 
@@ -151,7 +151,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Down);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Four');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Four', 'The DOWN ARROW key sets focus to the correct element');
       });
     })
 
@@ -164,7 +164,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Up);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'One Service');
+        this.test.assertSelectorHasText('.menuitem-focus', 'One Service', 'The UP ARROW key sets focus to the correct element');
       });
     })
 
@@ -175,7 +175,7 @@
       this.page.sendEvent('keypress', this.page.event.key.Up);
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Services');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Services', 'A sub menu can be left using the ARROW keys');
       });
     })
 
@@ -185,12 +185,7 @@
      */
     .then(function () {
       this.page.sendEvent('keypress', this.page.event.key.Tab);
-      this.wait(150, function () {
-        capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'One Service');
-      });
     })
-
 
     /* Capture screenshot for the readme preview */
     .then(function () {
@@ -221,7 +216,7 @@
 
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Setup');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Setup', 'The third navigation level can be reached using ARROW keys');
       });
     })
 
@@ -240,7 +235,7 @@
 
       this.wait(150, function () {
         capture('screenshots/focus-test.png', '.aria-menu');
-        this.test.assertSelectorHasText('.menuitem-focus', 'Two Service');
+        this.test.assertSelectorHasText('.menuitem-focus', 'Two Service', 'The menu works also with media queries');
       });
     })
 
