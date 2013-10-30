@@ -44,10 +44,10 @@ Using off-left positioning for hiding menus with support for showing menus on <c
   + [dist](https://github.com/jantimon/ariaMenu/tree/master/dist)
     + [other](https://github.com/jantimon/ariaMenu/tree/master/dist/other) (Zepto & AMD version)
     + [styles](https://github.com/jantimon/ariaMenu/tree/master/dist/styles) (Stylesheets)
-      + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.layout.css) (Layout styles)
-      + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.theme.css) (Theme styles)
-      + [ariaMenu.responsive.css](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.responsive.css) (Responsive theme and layout styles)
-      + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.css) (Minified layout and theme styles)
+      + [ariaMenu.layout.css](https://github.com/jantimon/ariaMenu/blob/master/dist/styles/ariaMenu.layout.css) (Layout styles)
+      + [ariaMenu.theme.css](https://github.com/jantimon/ariaMenu/blob/master/dist/styles/ariaMenu.theme.css) (Theme styles)
+      + [ariaMenu.responsive.css](https://github.com/jantimon/ariaMenu/blob/master/dist/styles/ariaMenu.responsive.css) (Responsive theme and layout styles)
+      + [ariaMenu.min.css ](https://github.com/jantimon/ariaMenu/blob/master/dist/styles/ariaMenu.min.css) (Minified layout and theme styles)
     + [ariaMenu.dev.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.dev.js) (Javascript with comments)
     + [ariaMenu.min.js](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js) (Minified jQuery version)
     + [ariaMenu.min.js.map](https://github.com/jantimon/ariaMenu/blob/master/dist/ariaMenu.min.js.map) (Sourcemap)
@@ -106,7 +106,7 @@ Also note that [98.6% of people who are blind have Javascript enabled](http://we
 
   + Closure compiler
     + [Preventing property renaming](http://closuretools.blogspot.de/2011/01/property-by-any-other-name-part-1.html)
-    + [Prevent jsLint warning](http://stackoverflow.com/questions/13192466/jshint-surpress-variable-is-better-written-in-dot-notation)
+    + [Prevent jsHint warnings](http://stackoverflow.com/questions/13192466/jshint-surpress-variable-is-better-written-in-dot-notation)
 
   + Boilerplate code
     + [RequireJS jQuery plugin](http://stackoverflow.com/questions/10918063/how-to-make-a-jquery-plugin-loadable-with-requirejs#answer-11890239)
