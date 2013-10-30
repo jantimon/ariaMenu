@@ -46,6 +46,13 @@ module.exports = function (grunt) {
       }
     },
 
+    groundskeeper: {
+      compile: {
+        expand: true,
+        src: ['dist/**/*.js']
+      }
+    },
+
     jshint: {
       files: ["src/<%= pkg.name %>.js", "dist/<%= pkg.name %>.dev.js"],
       options: {
@@ -162,7 +169,6 @@ module.exports = function (grunt) {
       }
     },
 
-
     cssmin: {
       minify: {
         files: {
@@ -174,38 +180,68 @@ module.exports = function (grunt) {
   });
 
 
-  // Default task(s).
+  // Default tasks
+  // build only jquery version only
   grunt.registerTask('default', [
+    // Delete old builds
     'clean',
+    // Apply jQuery wrapper
     'template:jquery',
+    // Validate jshint
     'jshint',
+    // Remove console.log
+    'groundskeeper',
+    // Compile jQuery version
     'closureCompiler:jquery',
+    // Compile sass
     'sass',
+    // Add css browser prefixes
     'autoprefixer',
+    // Minify css
     'cssmin',
+    // Output the js file sizes
     'bytesize'
   ]);
 
-  // Full build and test
+  // Build tasks
+  // build all versions and test them
   grunt.registerTask('build', [
+    // Delete old builds
     'clean',
+    // Apply jQuery wrapper
     'template:jquery',
+    // Apply AMD wrapper
     'template:amd',
+    // Apply zepto wrapper
     'template:zepto',
+    // Validate jshint
     'jshint',
+    // Remove console.log
+    'groundskeeper',
+    // Compile amd version
     'closureCompiler:amd',
+    // Compile zepto version
     'closureCompiler:zepto',
+    // Compile jQuery version
     'closureCompiler:jquery',
+    // Compile sass
     'sass',
+    // Add css browser prefixes
     'autoprefixer',
+    // Minify css
     'cssmin',
+    // Generate explainJS documentation
     'explainjs',
+    // Launch connect server
     'connect',
+    // Execute tests
     'casper',
+    // Output the js file sizes
     'bytesize'
   ]);
 
-  // Test only
+  // Test tasks
+  // Build jQuery version and run the tests
   grunt.registerTask('test', [
     'default',
     'connect',

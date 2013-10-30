@@ -17,7 +17,8 @@
     "grunt-bytesize": "",
     "grunt-casper": "",
     "grunt-autoprefixer": "~0.4.0",
-    "grunt-template": "~0.2.1"
+    "grunt-template": "~0.2.1",
+    "grunt-groundskeeper": "~0.1.6"
   },
   "repository": {
     "type": "git",
