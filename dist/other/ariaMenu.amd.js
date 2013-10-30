@@ -22,7 +22,7 @@
    *
    * @return {boolean}
    */
-  function supportsTouch(){
+  function supportsTouch() {
     return 'ontouchstart' in window || 'onmsgesturechange' in window;
   }
 
@@ -68,7 +68,7 @@
         }
       },
 
-       /* Triggered if the user moves his mouse over a list item */
+      /* Triggered if the user moves his mouse over a list item */
       listItemMouseOver: function () {
         $(this).focus();
       },
@@ -82,6 +82,7 @@
       /**
        * Triggered if a list item receives focus
        * @param {jQuery.event=} event
+       * @this {HTMLElement}
        */
       listItemFocus: function (event) {
         var settings = event.data.settings;
@@ -98,6 +99,7 @@
       /**
        * Triggered if the focus is lost
        * @param {jQuery.event=} event
+       * @this {HTMLElement}
        */
       listItemBlur: function (event) {
         var settings = event.data.settings;
@@ -135,60 +137,34 @@
        */
       arrowKeyDown: function (event) {
         var _this = event.data;
+
         // Usually the event target is the focused link - so we pick the
         // parent to get the active listElement
         var $focusedListElement = $(event.target).closest('li'),
-        // Get the focused list element Dimensions
-          focusedListElementWidth = $focusedListElement.width(),
-          focusedListElementHeight = $focusedListElement.height(),
         // Get the focused menu element
-          $focusedMenu = $focusedListElement.closest('ul'),
-        //  Get the parent element of the focused element (if one exists)
-          $parentListElement = ($focusedListElement[0] === this) ? $() : $focusedMenu.closest('li'),
-        // Get the parent menu of the focused element (if one exists)
-          $parentMenu = $parentListElement.parent(),
-        // Get the sub menu (if one exists)
-          $subMenu = $focusedListElement.find('>ul'),
-        // Create a virtual cursor with the position of the focused element
-          virtualCursor = new VirtualCursor();
+          $focusedMenu = $focusedListElement.closest('ul');
 
+        // Get the sub menu (if one exists)
+        var $subMenu = $focusedListElement.find('>ul');
+
+        //  Get the parent element of the focused element (if one exists)
+        var $parentListElement = ($focusedListElement[0] === this) ? $() : $focusedMenu.closest('li'),
+        // Get the parent menu of the focused element (if one exists)
+          $parentMenu = $parentListElement.parent();
+
+        // Create a virtual cursor with the position of the focused element
+        var virtualCursor = new VirtualCursor();
         // Move the cursor over the current focused element
         virtualCursor.moveOver($focusedListElement);
-
-        // {right} key pressed
-        // Move the virtual cursor to the right
-        if (event.which === 39) {
-          virtualCursor.left += focusedListElementWidth;
-        }
-        // {bottom} key pressed
-        // Move the virtual cursor down
-        else if (event.which === 40) {
-          virtualCursor.top += focusedListElementHeight;
-        }
-        // {left} key pressed
-        // Move the virtual cursor to the left
-        else if (event.which === 37) {
-          virtualCursor.left -= focusedListElementWidth;
-        }
-        // {top} key pressed
-        // Move the virtual cursor up
-        else {
-          virtualCursor.top -= focusedListElementHeight;
-        }
+        virtualCursor.moveRelative(event.which, $focusedListElement.width(), $focusedListElement.height());
 
         // Select the element below the virtual cursor
         var $selectedListElement = $(virtualCursor.getElementBelowCursor('li')),
           selectedMenu = $selectedListElement.parent()[0] || false;
 
         // Check if the virtual cursor selected a sibling menu item
-        if ($focusedMenu[0] === selectedMenu) {
-          if (_this.selectListElement($selectedListElement)) {
-            event.preventDefault();
-          }
-        }
-        // Check if the virtual cursor selected a sub menu
-        else if ($subMenu[0] === selectedMenu) {
-          // Select the first element in the sub menu
+        // or if the virtual cursor selected a sub menu
+        if ($focusedMenu[0] === selectedMenu || $subMenu[0] === selectedMenu) {
           if (_this.selectListElement($selectedListElement)) {
             event.preventDefault();
           }
@@ -310,8 +286,36 @@
       // relative to the current scroll position
       this.top += 0.5 * $target.height() - $document.scrollTop();
       this.left += 0.5 * $target.width() - $document.scrollLeft();
-
     },
+
+    /**
+     * Moves the curse relative to the last position
+     *
+     * @param direction {number} 37|38|39|40 Direction constant - as in the key code map
+     * https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Virtual_key_codes
+     * DOM_VK_LEFT   0x25 (37)  Left arrow.
+     * DOM_VK_UP     0x26 (38)  Up arrow.
+     * DOM_VK_RIGHT  0x27 (39)  Right arrow.
+     * DOM_VK_DOWN   0x28 (40)  Down arrow.
+     *
+     * @param x {number}
+     * @param y {number}
+     */
+    moveRelative: function (direction, x, y) {
+      // {left} or {right} key pressed
+      if (direction === 37 || direction === 39) {
+        // Move the virtual cursor horizontally
+        // event.which - 38 = -1 || +1
+        this.left += (direction - 38) * x;
+      }
+      // {up} or {bottom} key pressed
+      else {
+        // Move the virtual cursor vertically
+        // event.which - 39 = -1 || +1
+        this.top += (direction - 39) * y;
+      }
+    },
+
     /**
      * Return the element at the current courser position
      *
@@ -353,6 +357,8 @@
       }
     });
   };
+
+  
 
   
 }));

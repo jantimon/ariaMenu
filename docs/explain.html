@@ -44,7 +44,7 @@
           <p>Returns true if the browser supports touch events</p> <p>@return {boolean}</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>  function supportsTouch(){
+          <pre>  function supportsTouch() {
     return 'ontouchstart' in window || 'onmsgesturechange' in window;
   }
 </pre>
@@ -181,7 +181,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if a list item receives focus</p> <p>@param {jQuery.event=} event</p>
+          <p>Triggered if a list item receives focus</p> <p>@param {jQuery.event=} event</p> <p>@this {HTMLElement}</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemFocus: function (event) {
@@ -221,7 +221,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if the focus is lost</p> <p>@param {jQuery.event=} event</p>
+          <p>Triggered if the focus is lost</p> <p>@param {jQuery.event=} event</p> <p>@this {HTMLElement}</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      listItemBlur: function (event) {
@@ -307,7 +307,8 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      arrowKeyDown: function (event) {
-        var _this = event.data;</pre>
+        var _this = event.data;
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -326,44 +327,11 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Get the focused list element Dimensions</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          focusedListElementWidth = $focusedListElement.width(),
-          focusedListElementHeight = $focusedListElement.height(),</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
           <p>Get the focused menu element</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $focusedMenu = $focusedListElement.closest('ul'),</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Get the parent element of the focused element (if one exists)</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $parentListElement = ($focusedListElement[0] === this) ? $() : $focusedMenu.closest('li'),</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Get the parent menu of the focused element (if one exists)</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $parentMenu = $parentListElement.parent(),</pre>
+          <pre>          $focusedMenu = $focusedListElement.closest('ul');
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -374,7 +342,31 @@
           <p>Get the sub menu (if one exists)</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $subMenu = $focusedListElement.find('>ul'),</pre>
+          <pre>        var $subMenu = $focusedListElement.find('>ul');
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the parent element of the focused element (if one exists)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        var $parentListElement = ($focusedListElement[0] === this) ? $() : $focusedMenu.closest('li'),</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Get the parent menu of the focused element (if one exists)</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $parentMenu = $parentListElement.parent();
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -385,8 +377,7 @@
           <p>Create a virtual cursor with the position of the focused element</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          virtualCursor = new VirtualCursor();
-</pre>
+          <pre>        var virtualCursor = new VirtualCursor();</pre>
         </div>
       </div>
       <div class='clear'>
@@ -398,59 +389,7 @@
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>        virtualCursor.moveOver($focusedListElement);
-</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>{right} key pressed  Move the virtual cursor to the right</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if (event.which === 39) {
-          virtualCursor.left += focusedListElementWidth;
-        }</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>{bottom} key pressed  Move the virtual cursor down</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        else if (event.which === 40) {
-          virtualCursor.top += focusedListElementHeight;
-        }</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>{left} key pressed  Move the virtual cursor to the left</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        else if (event.which === 37) {
-          virtualCursor.left -= focusedListElementWidth;
-        }</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>{top} key pressed  Move the virtual cursor up</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        else {
-          virtualCursor.top -= focusedListElementHeight;
-        }
+        virtualCursor.moveRelative(event.which, $focusedListElement.width(), $focusedListElement.height());
 </pre>
         </div>
       </div>
@@ -472,36 +411,11 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Check if the virtual cursor selected a sibling menu item</p>
+          <p>Check if the virtual cursor selected a sibling menu item  or if the virtual cursor selected a sub menu</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if ($focusedMenu[0] === selectedMenu) {
+          <pre>        if ($focusedMenu[0] === selectedMenu || $subMenu[0] === selectedMenu) {
           if (_this.selectListElement($selectedListElement)) {
-            event.preventDefault();
-          }
-        }</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Check if the virtual cursor selected a sub menu</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        else if ($subMenu[0] === selectedMenu) {</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Select the first element in the sub menu</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          if (_this.selectListElement($selectedListElement)) {
             event.preventDefault();
           }
         }</pre>
@@ -791,8 +705,67 @@
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      this.top += 0.5 * $target.height() - $document.scrollTop();
       this.left += 0.5 * $target.width() - $document.scrollLeft();
-
-    },</pre>
+    },
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Moves the curse relative to the last position</p> <p>@param direction {number} 37|38|39|40 Direction constant - as in the key code map  https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent#Virtual<em>key</em>codes  DOM<em>VK</em>LEFT   0x25 (37)  Left arrow.  DOM<em>VK</em>UP     0x26 (38)  Up arrow.  DOM<em>VK</em>RIGHT  0x27 (39)  Right arrow.  DOM<em>VK</em>DOWN   0x28 (40)  Down arrow.</p> <p>@param x {number}</p> <p>@param y {number}</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    moveRelative: function (direction, x, y) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{left} or {right} key pressed</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      if (direction === 37 || direction === 39) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Move the virtual cursor horizontally  event.which - 38 = -1 || +1</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        this.left += (direction - 38) * x;
+      }</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>{up} or {bottom} key pressed</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>      else {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Move the virtual cursor vertically  event.which - 39 = -1 || +1</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        this.top += (direction - 39) * y;
+      }
+    },
+</pre>
         </div>
       </div>
       <div class='clear'>
@@ -858,6 +831,8 @@
       }
     });
   };
+
+
 
 
 }(jQuery));.</pre>
