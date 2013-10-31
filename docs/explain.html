@@ -846,11 +846,21 @@
           <pre>    function preventHandler(event) {
       event.preventDefault();
     }
-
-    $element.on('click', preventHandler);
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>catch all events for the next 350ms</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    $element.on('click', preventHandler);
     setTimeout(function () {
       $element.off('click', preventHandler);
-    }, 150);
+    }, 350);
   }
 
 </pre>

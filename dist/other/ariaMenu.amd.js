@@ -367,10 +367,11 @@
       event.preventDefault();
     }
 
+    // catch all events for the next 350ms
     $element.on('click', preventHandler);
     setTimeout(function () {
       $element.off('click', preventHandler);
-    }, 150);
+    }, 350);
   }
 
 
