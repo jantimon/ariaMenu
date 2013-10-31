@@ -39,27 +39,29 @@
     defaults: {
       'focusClass': 'menuitem-focus',
       'visibleMenuClass': 'show-menu',
-      'closeDelay': 100,
-      'secondTap': false
+      'closeDelay': 100
     },
 
     events: {
 
-      /* Triggered if the users clicks a link */
-      linkMouseClick: function () {
-      },
-
-      /* Triggered if the users touches a link */
+      /**
+       * Triggered if the users touches a link
+       * @param {jQuery.event=} event
+       * @this {HTMLElement} link
+       */
       linkTouch: function (event) {
         var settings = event.data.settings;
         // Get the links parent element
         var $touchedListElement = $(this).parent();
-        // If a sub menu can be found
-        // and double tabs are not handled differently then
-        // prevent the link execution and open the menu
-        if ($touchedListElement.find('>ul').length && (!settings['secondTab'] || !$(this).is(':focus'))) {
+        // If a sub menu can be found and the user didn't tap this list item item just before
+        if ($touchedListElement.find('>ul').length && !$touchedListElement.hasClass(settings['focusClass'])) {
+          // prevent the link execution and open the menu
           $(this).focus();
           event.preventDefault();
+        } else if (this.href) {
+          // Fix IOS-double click issue
+          // http://stackoverflow.com/questions/3038898/ipad-iphone-hover-problem-causes-the-user-to-double-click-a-link
+          window.location = this.href;
         }
       },
 
@@ -186,7 +188,7 @@
         .on('mouseover', 'a', this, this.events.listItemMouseOver)
         .on('mouseout', 'a', this, this.events.listItemMouseOut)
         .on('keydown', '>li', this, this.events.keyDown)
-        .on('click', 'a', this, supportsTouch() ? this.events.linkTouch : this.events.linkMouseClick)
+        .on('touchend', 'a', this, this.events.linkTouch)
         // Disable the css fallback
         .removeClass('css-fallback')
         // Add aria-menu class

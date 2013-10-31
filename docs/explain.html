@@ -78,8 +78,7 @@
           <pre>    defaults: {
       'focusClass': 'menuitem-focus',
       'visibleMenuClass': 'show-menu',
-      'closeDelay': 100,
-      'secondTap': false
+      'closeDelay': 100
     },
 
     events: {
@@ -91,20 +90,7 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if the users clicks a link</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>      linkMouseClick: function () {
-      },
-</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Triggered if the users touches a link</p>
+          <p>Triggered if the users touches a link</p> <p>@param {jQuery.event=} event</p> <p>@this {HTMLElement} link</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
           <pre>      linkTouch: function (event) {
@@ -127,12 +113,34 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>If a sub menu can be found  and double tabs are not handled differently then  prevent the link execution and open the menu</p>
+          <p>If a sub menu can be found and the user didn&#39;t tap this list item item just before</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if ($touchedListElement.find('>ul').length && (!settings['secondTab'] || !$(this).is(':focus'))) {
-          $(this).focus();
+          <pre>        if ($touchedListElement.find('>ul').length && !$touchedListElement.hasClass(settings['focusClass'])) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>prevent the link execution and open the menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $(this).focus();
           event.preventDefault();
+        } else if (this.href) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Fix IOS-double click issue  http://stackoverflow.com/questions/3038898/ipad-iphone-hover-problem-causes-the-user-to-double-click-a-link</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          window.location = this.href;
         }
       },
 </pre>
@@ -466,7 +474,7 @@
         .on('mouseover', 'a', this, this.events.listItemMouseOver)
         .on('mouseout', 'a', this, this.events.listItemMouseOut)
         .on('keydown', '>li', this, this.events.keyDown)
-        .on('click', 'a', this, supportsTouch() ? this.events.linkTouch : this.events.linkMouseClick)</pre>
+        .on('touchend', 'a', this, this.events.linkTouch)</pre>
         </div>
       </div>
       <div class='clear'>
