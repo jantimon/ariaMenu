@@ -341,6 +341,7 @@
   /**
    * Prevent Android from triggering buggy phantom clicks
    * http://stackoverflow.com/questions/2987706/touchend-event-doesnt-work-on-android
+   * http://stackoverflow.com/questions/17352865/preventdefault-not-stopping-mouseup-event-on-android/19717278
    *
    * @param {jQuery} $element
    */

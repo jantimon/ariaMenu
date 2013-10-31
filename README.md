@@ -13,7 +13,7 @@ Using off-left positioning for hiding menus with support for showing menus on <c
 
 ## Demo ##
 
- + **[Responsive layout ](http://jantimon.github.io/ariaMenu/responsive.html)**
+ + **[Responsive layout](http://jantimon.github.io/ariaMenu/responsive.html)**
 
 
 ## Features ##
@@ -24,6 +24,8 @@ Using off-left positioning for hiding menus with support for showing menus on <c
     + the first list element of a sub menu
  + **Escape**  closes any open menus.
  + **Tabbing** allows cycling through every menu item.
+ + Single **Tap** opens a menu
+ + Double **Tap** triggers the link
 
 ## Size ##
 
