@@ -125,22 +125,11 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>Search for a sub menu and pick the first link</p>
+          <p>If a sub menu can be found select the current link</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        var $firstLinkChildElement = $touchedListElement.find('>ul>li>a').first();</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>If a first sub menu could be found select it and prevent executing this link</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if ($firstLinkChildElement.length) {
-          $firstLinkChildElement.focus();
+          <pre>        if ($touchedListElement.find('>ul').length) {
+          $(this).focus();
           event.preventDefault();
         }
       },
@@ -831,8 +820,6 @@
       }
     });
   };
-
-
 
 
 }(jQuery));.</pre>

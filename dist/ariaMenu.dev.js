@@ -45,11 +45,9 @@
       linkTouch: function (event) {
         // Get the links parent element
         var $touchedListElement = $(this).parent();
-        // Search for a sub menu and pick the first link
-        var $firstLinkChildElement = $touchedListElement.find('>ul>li>a').first();
-        // If a first sub menu could be found select it and prevent executing this link
-        if ($firstLinkChildElement.length) {
-          $firstLinkChildElement.focus();
+        // If a sub menu can be found select the current link
+        if ($touchedListElement.find('>ul').length) {
+          $(this).focus();
           event.preventDefault();
         }
       },
@@ -343,8 +341,6 @@
       }
     });
   };
-
-  
 
   
 }(jQuery));
