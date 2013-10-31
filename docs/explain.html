@@ -78,7 +78,8 @@
           <pre>    defaults: {
       'focusClass': 'menuitem-focus',
       'visibleMenuClass': 'show-menu',
-      'closeDelay': 100
+      'closeDelay': 100,
+      'secondTab': false
     },
 
     events: {
@@ -106,7 +107,8 @@
           <p>Triggered if the users touches a link</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>      linkTouch: function (event) {</pre>
+          <pre>      linkTouch: function (event) {
+        var settings = event.data.settings;</pre>
         </div>
       </div>
       <div class='clear'>
@@ -125,10 +127,10 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>If a sub menu can be found select the current link</p>
+          <p>If a sub menu can be found  and double tabs are not handled differently then  prevent the link execution and open the menu</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>        if ($touchedListElement.find('>ul').length) {
+          <pre>        if ($touchedListElement.find('>ul').length && (!settings['secondTab'] || !$(this).is(':focus'))) {
           $(this).focus();
           event.preventDefault();
         }

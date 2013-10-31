@@ -32,7 +32,8 @@
     defaults: {
       'focusClass': 'menuitem-focus',
       'visibleMenuClass': 'show-menu',
-      'closeDelay': 100
+      'closeDelay': 100,
+      'secondTab': false
     },
 
     events: {
@@ -43,10 +44,13 @@
 
       /* Triggered if the users touches a link */
       linkTouch: function (event) {
+        var settings = event.data.settings;
         // Get the links parent element
         var $touchedListElement = $(this).parent();
-        // If a sub menu can be found select the current link
-        if ($touchedListElement.find('>ul').length) {
+        // If a sub menu can be found
+        // and double tabs are not handled differently then
+        // prevent the link execution and open the menu
+        if ($touchedListElement.find('>ul').length && (!settings['secondTab'] || !$(this).is(':focus'))) {
           $(this).focus();
           event.preventDefault();
         }
