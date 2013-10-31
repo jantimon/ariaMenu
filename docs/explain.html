@@ -124,11 +124,32 @@
     
       <div class='section'>
         <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>open the sub menu</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          $(this).focus();</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>prevent phantom clicks</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>          preventPhantomClicks($(this));</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
           <p>prevent the link execution and open the menu</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          $(this).focus();
-          event.preventDefault();
+          <pre>          event.preventDefault();
         } else if (this.href) {</pre>
         </div>
       </div>
@@ -799,6 +820,37 @@
     if (callback && delay) {
       $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
     }
+  }
+</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Prevent Android from triggering buggy phantom clicks  http://stackoverflow.com/questions/2987706/touchend-event-doesnt-work-on-android</p> <p>@param {jQuery} $element</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>  function preventPhantomClicks($element) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>Click catcher</p> <p>@param {!jQuery.event=} event</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>    function preventHandler(event) {
+      event.preventDefault();
+    }
+
+    $element.on('click', preventHandler);
+    setTimeout(function () {
+      $element.off('click', preventHandler);
+    }, 150);
   }
 
 </pre>

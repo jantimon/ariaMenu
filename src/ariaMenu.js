@@ -55,8 +55,11 @@
         var $touchedListElement = $(this).parent();
         // If a sub menu can be found and the user didn't tap this list item item just before
         if ($touchedListElement.find('>ul').length && !$touchedListElement.hasClass(settings['focusClass'])) {
-          // prevent the link execution and open the menu
+          // open the sub menu
           $(this).focus();
+          // prevent phantom clicks
+          preventPhantomClicks($(this));
+          // prevent the link execution and open the menu
           event.preventDefault();
         } else if (this.href) {
           // Fix IOS-double click issue
@@ -340,6 +343,28 @@
     if (callback && delay) {
       $(element).data('am-delay', setTimeout($.proxy(callback, element), delay));
     }
+  }
+
+  /**
+   * Prevent Android from triggering buggy phantom clicks
+   * http://stackoverflow.com/questions/2987706/touchend-event-doesnt-work-on-android
+   *
+   * @param {jQuery} $element
+   */
+  function preventPhantomClicks($element) {
+    /**
+     * Click catcher
+     * @param {!jQuery.event=} event
+     */
+    function preventHandler(event) {
+      event.preventDefault();
+    }
+
+    // catch all events for the next 150ms
+    $element.on('click', preventHandler);
+    setTimeout(function () {
+      $element.off('click', preventHandler);
+    }, 150);
   }
 
 
