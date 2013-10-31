@@ -33,7 +33,7 @@
       'focusClass': 'menuitem-focus',
       'visibleMenuClass': 'show-menu',
       'closeDelay': 100,
-      'secondTab': false
+      'secondTap': false
     },
 
     events: {
