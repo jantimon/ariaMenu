@@ -1,15 +1,17 @@
 {
   "name": "ariaMenu",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "ignore": [
     "**/.*",
     "node_modules",
     "components",
+    "docs",
     "closure_compiler",
     "tests",
     "screenshots",
     "src",
     "*.html",
-    "Gruntfile.js"
+    "Gruntfile.js",
+    "package.json"
   ]
 }
