@@ -1,0 +1,57 @@
+/*
+ *  This is an example how you might structure the css for a responsive
+ *  design. It's recommended to use only the layout part and do the theming
+ *  on your own.
+ *
+ *  See src/themes/_layout.scss
+ */
+@import "layout";
+@import "theme";
+
+.aria-menu {
+  @media screen and (max-width: 35em) {
+    > li > a {
+      min-width: 5em;
+      text-align: center;
+    }
+    ul {
+      display: none;
+    }
+    // The root menu should be a vertical menu
+    > li > ul {
+      @include aria-menu-vertical-menu();
+    }
+    // Theming
+    @include aria-menu-first-level();
+
+    // Sub menus should be vertical menus
+    ul {
+      @include aria-menu-second-level();
+    }
+  }
+
+  @media screen and (min-width: 35.01em) {
+    > li > a {
+      display: none;
+    }
+    // The root menu should be a horizontal menu
+    > li > ul {
+      display: block;
+      @include aria-menu-horizontal-menu();
+      @include aria-menu-first-level();
+    }
+    ul ul {
+      @include aria-menu-second-level();
+    }
+  }
+
+  // Sub menus should be vertical
+  ul ul {
+    @include aria-menu-vertical-menu();
+  }
+
+  // Add the default css fallback
+  @include aria-menu-css-fallback();
+
+  float: left;
+}

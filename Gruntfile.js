@@ -46,6 +46,15 @@ module.exports = function (grunt) {
       }
     },
 
+    copy: {
+      sass: {
+        files: [
+          // includes files within path
+          {expand: true, src: ['src/themes/*'], dest: 'dist/styles/sass/', filter: 'isFile'},
+        ]
+      }
+    },
+
     groundskeeper: {
       compile: {
         expand: true,
@@ -224,6 +233,8 @@ module.exports = function (grunt) {
     'closureCompiler:zepto',
     // Compile jQuery version
     'closureCompiler:jquery',
+    // Copy sass files
+    'copy:sass',
     // Compile sass
     'sass',
     // Add css browser prefixes

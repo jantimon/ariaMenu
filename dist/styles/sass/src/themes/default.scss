@@ -1,0 +1,29 @@
+/*
+ *  This is an example how you might structure the css for a NON responsive
+ *  design. It's recommended to use only the layout part and do the theming
+ *  on your own.
+ *
+ *  See src/themes/_layout.scss
+ */
+@import "layout";
+@import "theme";
+
+.aria-menu {
+
+  // The root menu should be a horizontal menu
+  @include aria-menu-horizontal-menu();
+
+  // Apply the theme for the first level
+  @include aria-menu-first-level();
+
+  // Sub menus should be vertical
+  ul {
+    @include aria-menu-vertical-menu();
+
+    // Apply the theme for all sub menus
+    @include aria-menu-second-level();
+  }
+
+  // Add the default css fallback
+  @include aria-menu-css-fallback();
+}
