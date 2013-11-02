@@ -1,12 +1,19 @@
 =======
 # AriaMenu #
 
-This page applies techniques described in Derek Featherstone's article [Better For Accessibility, and
-      specifically uses code from his Option 6 example.](http://simplyaccessible.com/examples/css-menu/option-6/)
+<code>bower install ariaMenu</code>
 
-Using off-left positioning for hiding menus with support for showing menus on <code>:focus</code> and
-  <code>:hover</code>. Includes proper <code>:focus</code> states for links. Uses jQuery to display menus on <code>:focus</code>.
-  Also uses ARIA properties for menus.
+  + WCAG conform
+  + [JSHint](https://github.com/jantimon/ariaMenu/blob/master/.jshintrc)
+  + **No** inline styles
+  + **No** <code>!important</code> styles
+  + **No** DOM structure changes
+  + **No** <code>resize</code>-events
+  + **No** <code>scroll</code>-events
+  + **No** css browser prefixes (thanks to [autoprefixer](https://github.com/ai/autoprefixer))
+  + Lightweight
+  + Separation of logic, layout and theming
+  + Automated testing
 
 ![CasperJS test screenshot](http://jantimon.github.io/ariaMenu/screenshots/preview.png)
 ![CasperJS responsive screenshot](http://jantimon.github.io/ariaMenu/screenshots/responsive.png)
@@ -81,20 +88,6 @@ How can a javascript menu be accessible?
 This project provides a CSS fallback.
 
 Also note that [98.6% of people who are blind have Javascript enabled](http://webaim.org/projects/screenreadersurvey4/#javascript)
-
-## Design goals ##
-
-  + WCAG conform
-  + [JSHint](https://github.com/jantimon/ariaMenu/blob/master/.jshintrc)
-  + **No** inline styles
-  + **No** <code>!important</code> styles
-  + **No** DOM structure changes
-  + **No** <code>resize</code>-events
-  + **No** <code>scroll</code>-events
-  + **No** css browser prefixes (thanks to [autoprefixer](https://github.com/ai/autoprefixer))
-  + Lightweight
-  + Separation of logic, layout and theming
-  + Automated testing
 
 ## Links ##
 
