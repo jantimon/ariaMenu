@@ -1,7 +1,21 @@
 =======
 # AriaMenu #
 
-<code>bower install ariaMenu</code>
+AriaMenu is a minimalistic, cross browser, cross device jQuery plugin.
+It improves a css-driven menu to be accessiable with touch and keyboard.
+
+Installation
+```
+bower install ariaMenu
+```
+JS
+```
+jQuery(".ariaMenu").ariaMenu();
+```
+CSS
+```
+.ariaMenu .show-menu { display : block }
+```
 
   + WCAG conform
   + [JSHint](https://github.com/jantimon/ariaMenu/blob/master/.jshintrc)
@@ -22,6 +36,17 @@
 
  + **[Responsive layout](http://jantimon.github.io/ariaMenu/responsive.html)**
 
+## Requirements ##
+
+Browser
+ * IE7+  
+ * Chrome
+ * Safari
+ * Firefox
+
+Dom/Event Library
+ * jQuery 1.7+
+ * Zepto
 
 ## Features ##
 
@@ -44,6 +69,7 @@
 ## Documentation ##
 
 **[Source code (explainJS)](http://jantimon.github.io/ariaMenu/docs/explain.html)**
+
 
 **Files**
 
