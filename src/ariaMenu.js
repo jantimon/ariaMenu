@@ -50,6 +50,8 @@
        * @this {HTMLElement} link
        */
       linkTouch: function (event) {
+        // prevent the link execution
+        event.preventDefault();
         var settings = event.data.settings;
         // Get the links parent element
         var $touchedListElement = $(this).parent();
@@ -59,12 +61,10 @@
           $(this).focus();
           // prevent phantom clicks
           preventPhantomClicks($(this));
-          // prevent the link execution and open the menu
-          event.preventDefault();
         } else if (this.href) {
           // Fix IOS-double click issue
           // http://stackoverflow.com/questions/3038898/ipad-iphone-hover-problem-causes-the-user-to-double-click-a-link
-          window.location = this.href;
+          this.click();
         }
       },
 

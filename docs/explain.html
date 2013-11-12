@@ -93,7 +93,18 @@
           <p>Triggered if the users touches a link</p> <p>@param {jQuery.event=} event</p> <p>@this {HTMLElement} link</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>      linkTouch: function (event) {
+          <pre>      linkTouch: function (event) {</pre>
+        </div>
+      </div>
+      <div class='clear'>
+      </div>
+    
+      <div class='section'>
+        <div class='comment grid-40 mobile-grid-100 not-empty'>
+          <p>prevent the link execution</p>
+        </div>
+        <div class='code grid-60 mobile-grid-100 not-empty'>
+          <pre>        event.preventDefault();
         var settings = event.data.settings;</pre>
         </div>
       </div>
@@ -138,18 +149,7 @@
           <p>prevent phantom clicks</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          preventPhantomClicks($(this));</pre>
-        </div>
-      </div>
-      <div class='clear'>
-      </div>
-    
-      <div class='section'>
-        <div class='comment grid-40 mobile-grid-100 not-empty'>
-          <p>prevent the link execution and open the menu</p>
-        </div>
-        <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          event.preventDefault();
+          <pre>          preventPhantomClicks($(this));
         } else if (this.href) {</pre>
         </div>
       </div>
@@ -161,7 +161,7 @@
           <p>Fix IOS-double click issue  http://stackoverflow.com/questions/3038898/ipad-iphone-hover-problem-causes-the-user-to-double-click-a-link</p>
         </div>
         <div class='code grid-60 mobile-grid-100 not-empty'>
-          <pre>          window.location = this.href;
+          <pre>          this.click();
         }
       },
 </pre>

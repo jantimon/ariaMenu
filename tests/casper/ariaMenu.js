@@ -38,7 +38,7 @@
 
 
   casper
-    .start(base_url)
+    .start(base_url + "/responsive.html")
     .viewport(1024, 768)
 
   /**
