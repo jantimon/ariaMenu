@@ -34,7 +34,7 @@
 
     <script>
       jQuery(function ($) {
-        $(".aria-menu").ariaMenu()
+        $(".aria-menu").ariaMenu({secondTap: true});
       });
     </script>
 
@@ -42,44 +42,44 @@
       <li>
         <a href="#">Menu</a>
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="responsive.html?home">Home</a></li>
           <li>
-            <a href="#">About</a>
+            <a href="responsive.html?about">About</a>
             <ul>
-              <li><a href="#">The Company</a></li>
-              <li><a href="#">The Team</a></li>
+              <li><a href="responsive.html?company">The Company</a></li>
+              <li><a href="responsive.html?team">The Team</a></li>
             </ul>
           </li>
           <li>
-            <a href="#">Services</a>
+            <a href="responsive.html?services">Services</a>
             <ul>
-              <li><a href="#">One Service</a></li>
-              <li><a href="#">Two Service</a></li>
-              <li><a href="#">Three Service</a>
+              <li><a href="responsive.html?one">One Service</a></li>
+              <li><a href="responsive.html?two">Two Service</a></li>
+              <li><a href="responsive.html?three">Three Service</a>
                 <ul>
-                  <li><a href="#">Setup</a></li>
-                  <li><a href="#">Implementation</a></li>
+                  <li><a href="responsive.html?setup">Setup</a></li>
+                  <li><a href="responsive.html?implementation">Implementation</a></li>
                 </ul>
               </li>
-              <li><a href="#">Four</a></li>
+              <li><a href="responsive.html?four">Four</a></li>
             </ul>
           </li>
           <li>
-            <a href="#">Products</a>
+            <a href="responsive.html?products">Products</a>
             <ul>
-              <li><a href="#">Apples</a></li>
-              <li><a href="#">Oranges</a></li>
-              <li><a href="#">Grapes</a></li>
-              <li><a href="#">Pears</a></li>
-              <li><a href="#">Strawberries</a></li>
+              <li><a href="responsive.html?Apples">Apples</a></li>
+              <li><a href="responsive.html?Oranges">Oranges</a></li>
+              <li><a href="responsive.html?Grapes">Grapes</a></li>
+              <li><a href="responsive.html?Pears">Pears</a></li>
+              <li><a href="responsive.html?Strawberries">Strawberries</a></li>
             </ul>
           </li>
           <li>
-            <a href="#">Contact Us</a>
+            <a href="responsive.html?Contact">Contact Us</a>
             <ul>
-              <li><a href="#">Store Hours</a></li>
-              <li><a href="#">Directions</a></li>
-              <li><a href="#">Staff Directory</a></li>
+              <li><a href="responsive.html?Store">Store Hours</a></li>
+              <li><a href="responsive.html?Directions">Directions</a></li>
+              <li><a href="responsive.html?Staff">Staff Directory</a></li>
             </ul>
           </li>
         </ul>
@@ -92,6 +92,9 @@
     <script>
       // Copy code into textarea
       $(".code").val($("<div/>").append($("ul.aria-menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
+      // Alert the current state
+      var state = window.location.search.substring(1);
+      if(state) alert(state);
     </script>
 
   </article>

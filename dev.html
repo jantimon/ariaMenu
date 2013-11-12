@@ -42,44 +42,44 @@
       <li>
         <a href="#">Menu</a>
         <ul>
-          <li><a href="touch.html?home">Home</a></li>
+          <li><a href="dev.html?home">Home</a></li>
           <li>
-            <a href="touch.html?about">About</a>
+            <a href="dev.html?about">About</a>
             <ul>
-              <li><a href="touch.html?company">The Company</a></li>
-              <li><a href="touch.html?team">The Team</a></li>
+              <li><a href="dev.html?company">The Company</a></li>
+              <li><a href="dev.html?team">The Team</a></li>
             </ul>
           </li>
           <li>
-            <a href="touch.html?services">Services</a>
+            <a href="dev.html?services">Services</a>
             <ul>
-              <li><a href="touch.html?one">One Service</a></li>
-              <li><a href="touch.html?two">Two Service</a></li>
-              <li><a href="touch.html?three">Three Service</a>
+              <li><a href="dev.html?one">One Service</a></li>
+              <li><a href="dev.html?two">Two Service</a></li>
+              <li><a href="dev.html?three">Three Service</a>
                 <ul>
-                  <li><a href="touch.html?setup">Setup</a></li>
-                  <li><a href="touch.html?implementation">Implementation</a></li>
+                  <li><a href="dev.html?setup">Setup</a></li>
+                  <li><a href="dev.html?implementation">Implementation</a></li>
                 </ul>
               </li>
-              <li><a href="#">Four</a></li>
+              <li><a href="dev.html?four">Four</a></li>
             </ul>
           </li>
           <li>
-            <a href="#">Products</a>
+            <a href="dev.html?products">Products</a>
             <ul>
-              <li><a href="#">Apples</a></li>
-              <li><a href="#">Oranges</a></li>
-              <li><a href="#">Grapes</a></li>
-              <li><a href="#">Pears</a></li>
-              <li><a href="#">Strawberries</a></li>
+              <li><a href="dev.html?Apples">Apples</a></li>
+              <li><a href="dev.html?Oranges">Oranges</a></li>
+              <li><a href="dev.html?Grapes">Grapes</a></li>
+              <li><a href="dev.html?Pears">Pears</a></li>
+              <li><a href="dev.html?Strawberries">Strawberries</a></li>
             </ul>
           </li>
           <li>
-            <a href="#">Contact Us</a>
+            <a href="dev.html?Contact">Contact Us</a>
             <ul>
-              <li><a href="#">Store Hours</a></li>
-              <li><a href="#">Directions</a></li>
-              <li><a href="#">Staff Directory</a></li>
+              <li><a href="dev.html?Store">Store Hours</a></li>
+              <li><a href="dev.html?Directions">Directions</a></li>
+              <li><a href="dev.html?Staff">Staff Directory</a></li>
             </ul>
           </li>
         </ul>
@@ -92,6 +92,9 @@
     <script>
       // Copy code into textarea
       $(".code").val($("<div/>").append($("ul.aria-menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
+      // Alert the current state
+      var state = window.location.search.substring(1);
+      if(state) alert(state);
     </script>
 
   </article>
