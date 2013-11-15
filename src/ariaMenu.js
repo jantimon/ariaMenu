@@ -59,9 +59,13 @@
         if ($touchedListElement.find('>ul').length && !$touchedListElement.hasClass(settings['focusClass'])) {
           // open the sub menu
           $(this).focus();
+          // https://gist.github.com/pamelafox/3580510
+          if (this.setSelectionRange) {
+            this.setSelectionRange(0, 0);
+          }
           // prevent phantom clicks
           preventPhantomClicks($(this));
-        } else if (this.href) {
+        } else {
           // Fix IOS-double click issue
           // http://stackoverflow.com/questions/3038898/ipad-iphone-hover-problem-causes-the-user-to-double-click-a-link
           this.click();
