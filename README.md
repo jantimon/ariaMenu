@@ -110,6 +110,12 @@ Guidelines to follow
 CasperJS Webkit tests
 [![Travis Build](https://api.travis-ci.org/jantimon/ariaMenu.png)](https://travis-ci.org/jantimon/ariaMenu)
 
+SauceLab tests
+[![Selenium Test Status](https://saucelabs.com/browser-matrix/ariaMenu.svg)](https://saucelabs.com/u/ariaMenu)
+
+Code coverage
+[Code coverage](http://jantimon.github.io/ariaMenu/docs/lcov/index.html)
+
 ## Javascript? ##
 
 How can a javascript menu be accessible?
