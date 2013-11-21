@@ -114,7 +114,7 @@ SauceLab tests
 [![Selenium Test Status](https://saucelabs.com/browser-matrix/ariaMenu.svg)](https://saucelabs.com/u/ariaMenu)
 
 Code coverage
-[Code coverage](http://jantimon.github.io/ariaMenu/docs/lcov/index.html)
+[Code coverage](http://jantimon.github.io/ariaMenu/docs/lcov/src/ariaMenu.js.gcov.html)
 
 ## Javascript? ##
 
