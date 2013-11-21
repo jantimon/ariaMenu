@@ -35,4 +35,4 @@ install:
   - cd ../..
 
 # Intern execution
-script: node_modules/intern/runner.js config=tests/sauceLabs/intern.config.js
+script: node node_modules/intern/runner.js config=tests/sauceLabs/intern.config.js
