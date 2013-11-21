@@ -21,6 +21,10 @@
       font-family: monospace;
     }
 
+    .clicked {
+      color: red !important;
+    }
+
     dd {
       font-weight: bold;
     }
@@ -91,7 +95,7 @@
     </textarea>
     <script>
       // Copy code into textarea
-      $(".code").val($("<div/>").append($("ul.aria-menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
+      $(".code").val($("<div/>").append($("ul.menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
       // Alert the current state
       var state = window.location.search.substring(1);
       if (state) $("#title").text(state).hide().fadeIn('fast');

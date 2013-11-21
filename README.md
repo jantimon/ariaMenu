@@ -2,7 +2,7 @@
 # AriaMenu #
 
 AriaMenu is a minimalistic, cross browser, cross device jQuery plugin.
-It improves a css-driven menu to be accessiable with touch and keyboard.
+It improves a css-driven menu to be accessible with touch and keyboard.
 
 Installation
 ```
@@ -39,10 +39,12 @@ CSS
 ## Requirements ##
 
 Browser
- * IE7+  
+ * IE7+
  * Chrome
  * Safari
  * Firefox
+ * iPhone 6.0 Safari
+ * Android Safari 4.0
 
 Dom/Event Library
  * jQuery 1.7+

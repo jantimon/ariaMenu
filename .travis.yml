@@ -4,6 +4,13 @@ node_js:
 rvm:
   - 1.8.7
 
+env:
+  global:
+    # please get your own free key if you want to test yourself
+    - SAUCE_USERNAME: ariaMenu
+    - SAUCE_ACCESS_KEY: ef3d2b4e-b257-40df-a4af-533a5aa2e584
+
+
 before_install:
   - gem install sass
   - npm install -g grunt-cli
@@ -18,3 +25,14 @@ before_script:
   - casperjs --version
   - ruby --version
   - sass --version
+
+# Intern installation
+# https://github.com/theintern/intern/wiki/Travis-CI-integration
+install:
+  - npm install
+  - cd node_modules/intern
+  - npm install --production
+  - cd ../..
+
+# Intern execution
+script: node_modules/intern/runner.js config=tests/sauceLabs/intern.config.js

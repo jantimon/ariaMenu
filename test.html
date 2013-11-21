@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Automated test page</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="src/ariaMenu.js"></script>
+  <link href="dist/styles/ariaMenu.responsive.css" type="text/css" rel="stylesheet">
+  <!-- Demo styling -->
+  <style type="text/css">
+    p {
+      clear: both;
+    }
+
+    .code {
+      margin-top: 300px;
+      width: 100%;
+      border: 1px;
+      resize: none;
+      height: 700px;
+      font-family: monospace;
+    }
+
+    dd {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="example">
+
+<div class="content wide">
+  <article role="main">
+    <h1>CSS Dropdown Menus</h1>
+
+    <script>
+      jQuery(function ($) {
+        $(".menu").ariaMenu({secondTap: true});
+      });
+    </script>
+
+    <ul class="menu css-fallback">
+      <li>
+        <a href="#">Menu</a>
+        <ul>
+          <li><a href="test.html?home">Home</a></li>
+          <li>
+            <a href="test.html?about">About</a>
+            <ul>
+              <li><a href="test.html?company">The Company</a></li>
+              <li><a href="test.html?team">The Team</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="test.html?services">Services</a>
+            <ul>
+              <li><a href="test.html?one">One Service</a></li>
+              <li><a href="test.html?two">Two Service</a></li>
+              <li><a href="test.html?three">Three Service</a>
+                <ul>
+                  <li><a href="test.html?setup">Setup</a></li>
+                  <li><a href="test.html?implementation">Implementation</a></li>
+                </ul>
+              </li>
+              <li><a href="test.html?four">Four</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="test.html?products">Products</a>
+            <ul>
+              <li><a href="test.html?Apples">Apples</a></li>
+              <li><a href="test.html?Oranges">Oranges</a></li>
+              <li><a href="test.html?Grapes">Grapes</a></li>
+              <li><a href="test.html?Pears">Pears</a></li>
+              <li><a href="test.html?Strawberries">Strawberries</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="test.html?Contact">Contact Us</a>
+            <ul>
+              <li><a href="test.html?Store">Store Hours</a></li>
+              <li><a href="test.html?Directions">Directions</a></li>
+              <li><a href="test.html?Staff">Staff Directory</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+
+    <textarea class="code">
+    </textarea>
+    <script>
+      // Copy code into textarea
+      $(".code").val($("<div/>").append($("ul.aria-menu").clone()).html() + "\n" + $("<div/>").append($("body script:first").clone()).html());
+      // Alert the current state
+      var state = window.location.search.substring(1);
+      if(state) window.title = (state);
+    </script>
+
+  </article>
+
+</div>
+
+</div>
+</div>
+</body>
+</html>
