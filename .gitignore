@@ -2,3 +2,4 @@ node_modules
 .sass-cache
 screenshots
 sauce_connect.log
+lcov.info
