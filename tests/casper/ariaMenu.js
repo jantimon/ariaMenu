@@ -38,7 +38,7 @@
 
 
   casper
-    .start(base_url + "/responsive.html")
+    .start(base_url + "/tests/")
     .viewport(1024, 768)
 
   /**
@@ -46,7 +46,7 @@
    */
     .then(function () {
       // Test web server connection
-      this.test.assertTitle('CSS Dropdown Menus', 'Make sure the title is set');
+      this.test.assertTitle('Automated test page', 'Make sure the title is set');
 
       // Test if the plugin was load
       var type = this.evaluate(function () {
@@ -196,7 +196,7 @@
 
 
     /* Responsive tests */
-    .thenOpen(base_url + '/responsive.html', function () {
+    .thenOpen(base_url + '/tests/', function () {
       this.evaluate(function () {
         jQuery('.aria-menu a:visible:first').focus();
       });

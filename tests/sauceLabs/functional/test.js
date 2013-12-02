@@ -117,7 +117,7 @@ define([
       // Run the test
       return promisedWebDriver
         .then(log("Touch test"))
-        .get(require.toUrl('test.html'))
+        .get(require.toUrl('tests/index.html'))
         .url()
         .then(function (url) {
           baseUrl = url;
@@ -146,7 +146,7 @@ define([
         .then(asserts.activeText(promisedWebDriver, "Three Service", "Correct link was focused"))
 
         .then(log('Reopen the page'))
-        .get(require.toUrl('test.html'))
+        .get(require.toUrl('tests/index.html'))
 
         // Click through the menu
         .then(log('Click at an open menu point'))
@@ -172,7 +172,7 @@ define([
       // Run the test
       return promisedWebDriver
         .then(log("Mouse test"))
-        .get(require.toUrl('test.html'))
+        .get(require.toUrl('tests/index.html'))
         // Wait for initialization
         .waitForElementByCss(selectors.menu())
         .sleep(150)
@@ -210,7 +210,7 @@ define([
       // Run the test
       return promisedWebDriver
         .then(log("Keyboard test"))
-        .get(require.toUrl('test.html'))
+        .get(require.toUrl('tests/index.html'))
         // Wait for initialization
         .waitForElementByCss(selectors.menu())
         .sleep(150)

@@ -96,6 +96,11 @@
       var state = window.location.search.substring(1);
       if(state) $("#title").text(state).text(state).hide().fadeIn('fast');;
     </script>
+    <!--[if lte IE 8]>
+    <script>
+      document.body.className += ' no-mediaqueries';
+    </script>
+    <![endif]-->
 
   </article>
 

@@ -118,7 +118,7 @@ Code coverage
 
 ## Javascript? ##
 
-ariaMenu doesn't aim to be a fully fledged javascript menu but only a light weight unobtrustive enhancment for your CSS menu.
+It's not the aim of ariaMenu to be a fully fledged javascript menu but only a light weight unobtrusive enhancement for your CSS menu.
 
 Also note that [98.6% of people who are blind have Javascript enabled](http://webaim.org/projects/screenreadersurvey4/#javascript)
 

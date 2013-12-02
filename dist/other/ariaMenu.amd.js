@@ -66,10 +66,6 @@
         if ($touchedListElement.find('>ul').length && !$touchedListElement.hasClass(settings['focusClass'])) {
           // open the sub menu
           $(this).focus();
-          // https://gist.github.com/pamelafox/3580510
-          if (this.setSelectionRange) {
-            this.setSelectionRange(0, 0);
-          }
           // prevent phantom clicks
           preventPhantomClicks($(this));
         } else {
@@ -360,6 +356,7 @@
    * Prevent Android from triggering buggy phantom clicks
    * http://stackoverflow.com/questions/2987706/touchend-event-doesnt-work-on-android
    * http://stackoverflow.com/questions/17352865/preventdefault-not-stopping-mouseup-event-on-android/19717278
+   * http://jsfiddle.net/FjuHu/6/
    *
    * @param {jQuery} $element
    */

@@ -50,6 +50,22 @@
     @include aria-menu-vertical-menu();
   }
 
+  // IE 7 & 8 styles
+  .no-mediaqueries & {
+    > li > a {
+      display: none;
+    }
+    // The root menu should be a horizontal menu
+    > li > ul {
+      display: block;
+      @include aria-menu-horizontal-menu();
+      @include aria-menu-first-level();
+    }
+    ul ul {
+      @include aria-menu-second-level();
+    }
+  }
+
   // Add the default css fallback
   @include aria-menu-css-fallback();
 
