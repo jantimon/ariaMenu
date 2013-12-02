@@ -25,7 +25,9 @@ define({
 
   environments: [
 //    { browserName: 'android', 'version': '4.0', platform: 'Linux', 'tags': ['mobile'] },
-//    { browserName: 'internet explorer', version: '10', platform: 'Windows 8', 'tags': ['mouse', 'keyboard'] },
+   { browserName: 'internet explorer', version: '9', platform: 'Windows 7', 'tags': ['mouse'] },
+//   { browserName: 'internet explorer', version: '10', platform: 'Windows 8', 'tags': ['mouse'] },
+//   { browserName: 'internet explorer', version: '11', platform: 'Windows 8.1', 'tags': ['mouse'] },
     { browserName: '', device: 'iPhone Simulator', app: 'safari', 'version': '6.1', 'tags': ['touch'] },
     { browserName: 'firefox', version: '25', platform: [ 'OS X 10.6', 'Windows 7' ], 'tags': ['mouse', 'keyboard'] },
     { browserName: 'chrome', version: '', platform: [ 'Linux', 'OS X 10.6', 'Windows 7' ], 'tags': ['mouse', 'keyboard'] },
