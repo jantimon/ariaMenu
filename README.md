@@ -118,8 +118,7 @@ Code coverage
 
 ## Javascript? ##
 
-How can a javascript menu be accessible?
-This project provides a CSS fallback.
+ariaMenu doesn't aim to be a fully fledged javascript menu but only a light weight unobtrustive enhancment for your CSS menu.
 
 Also note that [98.6% of people who are blind have Javascript enabled](http://webaim.org/projects/screenreadersurvey4/#javascript)
 
