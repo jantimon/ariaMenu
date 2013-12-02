@@ -36,6 +36,7 @@
 
   // Sub menus
   > li > ul {
+    left: 0;
     top: $sub-menu-offset;
   }
 }
@@ -66,7 +67,7 @@
     li:hover ul,
     li:focus ul {
       /* Sub menu active state (css fallback only) */
-      left: 0px;
+      left: 0;
     }
   }
 }

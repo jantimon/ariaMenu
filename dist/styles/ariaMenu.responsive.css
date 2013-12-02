@@ -165,6 +165,7 @@
   }
 
   .aria-menu > li > ul > li > ul {
+    left: 0;
     top: 99.9%;
   }
 
@@ -273,6 +274,7 @@
 }
 
 .no-mediaqueries .aria-menu > li > ul > li > ul {
+  left: 0;
   top: 99.9%;
 }
 
@@ -355,5 +357,5 @@
 .aria-menu.css-fallback li:hover ul,
 .aria-menu.css-fallback li:focus ul {
   /* Sub menu active state (css fallback only) */
-  left: 0px;
+  left: 0;
 }
